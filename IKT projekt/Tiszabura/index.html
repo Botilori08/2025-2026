@@ -6,42 +6,58 @@
     <title>MMSZ Adatok</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <style>
+
+        span
+        {
+            border-radius: 5px;
+
+        }
+
+
+    </style>
+
 </head>
-<body>
+<body onload="alert()">
+    <div class="bg-danger mb-0"><h1>MMSZ Adatok</h1></div>
 
     <div class="container">
-        <div class="row bg-danger"><h1>MMSZ Adatok</h1></div>
         <div class="row">
-            <div class="col-lg-4 bg-warning">
+            <div class="col-lg-6">
                 <h2>1.feladat</h2>
-                <button type="button" onclick="feladat1()" class="btn btn-secondary">Végrehajt</button>
+                A leggyakoribb családnév a(z): <span id="feladat1-eredmeny" class="bg-warning text-white p-1">Eredmény</span>
             </div>
-            <div class="col-lg-8 fs-3">
-                A leggyakoribb családnév a(z): <span id="feladat1-eredmeny">Eredmény</span>
-            </div>
+
         </div>
         <div class="row">
-            <div class="col-lg-4 bg-warning">
+            <div class="col-lg-6">
                 <h2>2.feladat</h2>
-                <button type="button" onclick="feladat2()" class="btn btn-secondary">Végrehajt</button>
-            </div>
-            <div class="col-lg-8 fs-3">
-                A leggyakoribb családnév a(z): <span id="feladat2-eredmeny">Eredmény</span>
+                A leggyakoribb családnév a(z): <span id="feladat2-eredmeny" class="bg-success text-white p-1">Eredmény</span>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-4 bg-warning">
+            <div class="col-lg-6">
                 <h2>3.feladat</h2>
-                <button type="button" onclick="feladat3()" class="btn btn-secondary">Végrehajt</button>
+                A leggyakoribb második utónév a(z): <span id="feladat3-eredmeny" class="bg-primary text-white p-1">Eredmény</span>
             </div>
-            <div class="col-lg-8 fs-3">
-                A leggyakoribb második utónév a(z): <span id="feladat3-eredmeny">Eredmény</span>
+        </div>
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>4.feladat</h2>
+                A leggyakoribb utolsó utónév a(z): <span id="feladat4-eredmeny" class="bg-danger text-white p-1">Eredmény</span>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-lg-6">
+                <h2>5.feladat</h2>
             </div>
         </div>
     </div>
 
     <script>
-
+        
         let adatok = [];
 
         document.body.onload=betolt();
@@ -65,8 +81,16 @@
                     adatok.pop();
 
                     console.log(adatok)
+
+                        feladat1();
+                        feladat2();
+                        feladat3();
+                        feladat4();
                 }
             )
+
+
+
         }
 
 
@@ -200,9 +224,49 @@
 
             document.getElementById("feladat3-eredmeny").innerHTML = legtobb;
         }
+
+
         function feladat4()
         {
+            let vezeteknevekLast = [];
+
+
             
+            vezeteknevekLast = adatok.map(e => e.nev.split(" ")[e.nev.split(" ").length-1]);
+            
+            console.log(vezeteknevekLast)
+
+            let vezeteknevStat = {};
+
+            vezeteknevekLast.forEach(e => 
+                {
+                    if(Object.keys(vezeteknevStat).includes(e))
+                    {
+                        vezeteknevStat[e]++;
+                    }
+                    else
+                    {
+                        vezeteknevStat[e] = 1;
+                    }
+                }
+            )
+
+            console.log(vezeteknevStat);
+
+            let legnagyobb;
+            let legtobb = 0;
+            Object.keys(vezeteknevStat).forEach(e =>
+               {
+                    if(vezeteknevStat[e] > legtobb)
+                    {
+                        legnagyobb = e;
+                        legtobb = vezeteknevStat[e];
+                    }
+               } 
+            )
+            console.log(legnagyobb);
+            
+            document.getElementById("feladat4-eredmeny").innerHTML = legnagyobb
         }
 
     </script>
