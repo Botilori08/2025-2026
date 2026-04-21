@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tili-toli játék</title>
+    <style>
+        table
+        {
+            margin: auto;
+            border: 1px solid black;
+        }
+        td
+        {
+            border: 1px solid black;
+        }
+        .doboz
+        {
+            height: 150px;
+            width: 150px;
+            text-align: center;
+            font-family: 'Courier New', Courier, monospace;
+        }
+
+    </style>
+</head>
+<body>
+    <div id="tablahelye"></div>
+
+    <script>
+
+        document.body.onload = betolt();
+
+        
+        function betolt()
+        {
+
+            let elozo = "";
+
+            let megjelenit = document.getElementById("tablahelye")
+
+            let tablazat = document.createElement("table")
+            tablazat.id = "tabla"
+
+            let sor = document.createElement("tr")
+            
+            for(let i = 0;i < 16;i++)
+            {
+                let cella = document.createElement("td")
+                cella.addEventListener("click",function(event){
+                    elozo = event.target;
+                    console.log(elozo)
+                })
+                
+                let doboz = document.createElement("div")
+                doboz.id = "D"+i;
+                if(i != 0)
+                {
+                    doboz.innerHTML = i;
+                    doboz.style.backgroundColor = "cornflowerblue";
+                }
+
+                doboz.className = "doboz"
+
+                cella.appendChild(doboz);
+                sor.appendChild(cella);
+                if(i%4 == 3)
+                {
+                    tablazat.appendChild(sor);
+                    sor = document.createElement("tr");                    
+                }
+
+
+            }
+
+            megjelenit.appendChild(tablazat)
+            
+
+
+            
+        }
+
+
+
+    </script>
+</body>
+</html>

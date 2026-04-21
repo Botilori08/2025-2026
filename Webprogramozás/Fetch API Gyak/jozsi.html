@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Józsi</title>
+    <style>
+        button
+        {
+            font-size:30px;
+            margin-bottom:50px;
+        }
+        div
+        {
+            font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+            font-size: 20px;
+        }
+    </style>
+</head>
+<body>
+    <button onclick="betolt()">Jóska</button>
+    <div id="ide"></div>
+
+
+    <script>
+        function betolt()
+        {
+            //console.log("józsi")
+            fetch("joska.json")
+            .then(x => x.json())
+            .then(e => {
+
+
+                document.getElementById("ide").innerHTML = "<b>Név: </b>"+e.nev;
+                
+                document.getElementById("ide").innerHTML += "<div><b>Életkor: </b>"+e.eletkor+"</div>";
+
+                const div = document.createElement("div");
+                div.id= "tablazatHelye";
+                lista = "<b>Végzettségei:</b>\n<ul>"
+                e.vegzettsegek.forEach(e => { lista += "<li>"+e+"</li>"});
+                lista += "</ul>"
+                div.innerHTML = lista;
+                document.getElementById("ide").appendChild(div);
+
+                //document.getElementById("ide").innerHTML += "<div><b>Végzettségei: </b>"+e.vegzettsegek.join(",")+"</div>";
+
+
+
+
+            })
+        }
+
+
+    </script>
+</body>
+</html>

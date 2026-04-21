@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Társasjáték</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    <style>
+
+        .mezo
+        {
+            height:40px;
+            width:40px;
+            border: 1px solid black;
+            padding:2px;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .mezoE
+        {
+            background-color: red;
+        }
+
+        .mezoV
+        {
+            background-color: aqua;
+        }
+
+        #palya
+        {
+            width: 100%;
+            overflow-x: none;
+        }
+
+    </style>
+    
+</head>
+<body>
+    <div class="col-12 bg-primary p-3">Társasjáték</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h3>2. feladat</h3>
+                <p>A dobások száma: <span id="f2dobas"></span></p>
+                <p>Az ösvények száma: <span id="f2osveny"></span></p>
+                <button type="button" onclick="feladat2()" class="btn btn-primary">Lekérés</button>
+            </div>
+            <div class="col-lg-6">
+                <h3>3. feladat</h3>
+                <p>Az egyik leghosszabb a(z) <span id="f3szama"></span> ösvény, hossza: <span id="f3hossz"></span></p>
+                <button type="button" onclick="feladat3()" class="btn btn-primary">Lekérés</button>
+            </div>
+
+        </div>
+                <div class="row">
+                <div class="col-lg-12">
+                    <h3>4. feladat</h3>
+                    <select name="" id="osvenyValasztas" onchange="feladat5();feladat6();feladat7();feladat8()">
+                        <option value="" selected>Válassz mezőt</option>
+                    </select>
+                    <label for="jatekosSzam">Játékosok száma</label>
+                    <input type="number" id="jatekosSzam" min="2" max="5" value="2">
+                </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>5. feladat</h3>
+                <ul id="osvenyStat"></ul>
+                
+            </div>
+
+        </div>
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>6. feladat</h3>
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Mező</th>
+                            <th scope="col">Sorszám</th>
+                        </tr>
+
+                    </thead>
+                    <tbody id="f6Tabla">
+                        
+                    </tbody>
+                </table>
+                
+            </div>
+
+        </div>
+
+        <div class="row">
+            <div class="col-lg-12">
+                <h3>7. feladat</h3>
+                <div id="palya"></div>
+            </div>
+
+        </div>
+
+    </div>
+
+    <script>
+
+        
+        let sorszam;
+        let jatekosSzam;
+        let dobasok = [];
+        let osvenyek = [];
+
+        function betolt()
+        {
+            fetch("dobasok.txt")
+            .then(x => x.text())
+            .then(y => {
+                dobasok = y.split(" ").map(e => parseInt(e));
+                //console.log(dobasok)
+            })
+
+            fetch("osvenyek.txt")
+            .then(x => x.text())
+            .then(y => {
+                osvenyek = y.split("\r\n");
+                osvenyek.pop();
+                //console.log(osvenyek);
+                feladat4();
+            })
+
+            
+        }
+
+        function feladat2()
+        {
+            $("#f2dobas").html(dobasok.length);
+            $("#f2osveny").html(osvenyek.length);
+        }
+
+        function feladat3()
+        {
+            let maxHossz = Math.max(...osvenyek.map(x => x.length));//map() => bejárja és tömböt ad vissza 
+                                                                    //... => "kiteríti" a listát vesszővel elválasztva
+            let index = osvenyek.map(x => x.length).indexOf(maxHossz);
+
+            console.log("maxHossz: ",maxHossz,"sorszam: ",index+1);
+
+            $("#f3szama").html(index+1);
+
+            $("#f3hossz").html(maxHossz);
+
+            //document.querySelector("#f3szama").innerHTML = index
+        }
+
+        function feladat4()
+        {
+            let select = document.getElementById("osvenyValasztas");
+
+            
+            osvenyek.forEach((e,index) =>
+                {
+                    let option = document.createElement("option");
+                    //let option = $("<option>"); JQery megoldás
+                    option.innerHTML = `${index+1}. (${e.length})`;
+                    select.appendChild(option)
+                    
+                }
+            )
+
+        }
+
+        function feladat5()
+        {
+
+            let osvenyValasztas = document.getElementById("osvenyValasztas");
+
+            let osvenySzam = osvenyValasztas.options.selectedIndex-1;
+
+            let osveny = osvenyek[osvenySzam];
+
+            //console.log(osveny)
+
+            
+            let mezok = {};
+
+            osveny.split("").forEach(mezo => {
+                //console.log(Object.keys(mezo));
+                //console.log(Object.values(mezo));
+
+                if(Object.keys(mezok).includes(mezo))
+                {
+                    mezok[mezo]++;//Ha van már ilyen kulcs: Megnöveljük az értékét
+                }
+                else
+                {
+                    mezok[mezo]=1;//Ha nincs ilyen kulcs (találunk újat): Hozzáadjuk a kulcs értékét (1 lesz)
+                }
+
+                //másik megoldás
+
+                if(mezok[mezo])
+                {
+                    mezok[mezo]++;
+                }
+                else
+                {
+                    mezok[mezo] = 1;
+                }
+            })
+
+            //console.log(mezok);
+
+            
+            let stat = document.getElementById("osvenyStat");
+            stat.innerHTML = "";
+
+            Object.keys(mezok).forEach(mezo =>
+                {
+                    let li = document.createElement("li");
+                    li.innerHTML = `<span>${mezo}:</span> <span>${mezok[mezo]}</span>`;
+
+                    stat.appendChild(li);
+
+                }
+            )
+
+        }
+
+        function feladat6()
+        {
+            let osvenyValasztas = document.getElementById("osvenyValasztas");
+
+            let osvenySzam = osvenyValasztas.options.selectedIndex-1;
+
+            let osveny = osvenyek[osvenySzam];
+
+            let mezok = {};
+
+            osveny.split("").forEach((mezo,index) => {
+                //console.log(Object.keys(mezo));
+                //console.log(Object.values(mezo));
+
+                if(Object.keys(mezok).includes(mezo))
+                {
+                    mezok[mezo].push(index+1);//Ha van már ilyen kulcs: Megnöveljük az értékét
+                }
+                else
+                {
+                    mezok[mezo]= [index+1];//Ha nincs ilyen kulcs (találunk újat): Hozzáadjuk a kulcs értékét (1 lesz)
+                }
+            });
+
+            let table = document.getElementById("f6Tabla")
+            table.innerHTML = "";
+            Object.keys(mezok).forEach(mezo => {
+                if(mezo!="M")
+                {
+                    mezok[mezo].forEach(x =>
+                        {
+                            let tr = document.createElement("tr");
+                            let tdMezo = document.createElement("td");
+                            tdMezo.innerHTML = mezo;
+                            let tdSorszam = document.createElement("td");
+                            tdSorszam.innerHTML = x;
+
+                            tr.appendChild(tdMezo);
+                            tr.appendChild(tdSorszam);
+
+                            table.appendChild(tr);
+                        }
+                    )
+                }
+            });
+
+        }
+
+        function feladat7()
+        {
+
+            let osvenyValasztas = document.getElementById("osvenyValasztas");
+
+            let osvenySzam = osvenyValasztas.options.selectedIndex-1;
+
+            let osveny = osvenyek[osvenySzam];
+
+            
+
+            let palya = document.getElementById("palya");
+            palya.innerHTML="";
+
+            palyaKeszit(osveny,false).forEach( e => palya.appendChild(e));
+
+            let jatekosSzam = document.getElementById("jatekosSzam")
+            
+            let dobasOsszegek = new Array(jatekosSzam).map(x => 0);
+
+            console.log(dobasOsszegek)
+
+            for(let i = 0;i < dobasok.length;i++)
+            {
+
+            }
+            //console.log(palya);
+        }
+
+        function feladat8()
+        {
+
+            
+        }
+
+
+
+        function palyaKeszit(osveny,allM = false)
+        {
+
+            let mezok = [];
+
+            osveny.split("").forEach(mezo =>
+                {
+                    let div = document.createElement("div");
+                    if(allM)
+                    {
+                        div.innerHTML= "M";
+                        div.className = "mezo mezoM";
+                    }
+                    else
+                    {
+                        div.innerHTML = mezo;
+                        div.className = `mezo mezo${mezo}`;
+                    }
+
+                    mezok.push(div)
+
+                }
+            )
+            return mezok;
+        }
+        
+        betolt();
+    </script>
+
+</body>
+</html>

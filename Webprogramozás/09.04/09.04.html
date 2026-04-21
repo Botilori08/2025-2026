@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09.04</title>
+	<style>
+		button{
+			font-size:20px;
+		}
+		input
+		{
+			font-size:20px;
+		}
+
+		ul li
+		{
+			font-size: 18px;
+			font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+		}
+	</style>
+</head>
+<body>
+
+	<input type="text" id="szoveg">
+	<button onclick="listaba()">Kiírás</button>
+	<ul id="kiir"></ul>
+
+    <script>
+		function listaba()
+		{
+			let szovegek = [];
+			szovegek.push(document.getElementById("szoveg").value);
+
+			szovegek.reverse()
+
+			for(let i = 0;i < szovegek.length;i++)
+			{
+				document.getElementById("kiir").innerHTML += "<li>"+szovegek[i]+"</li>"
+			}
+		}
+
+	</script> 
+</body>
+</html>

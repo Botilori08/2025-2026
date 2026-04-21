@@ -1,0 +1,74 @@
+﻿<Window x:Class="autok.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:autok"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800">
+    <Grid>
+        <TabControl>
+            <TabItem Header="2. feladat">
+                <Grid Background="#FFE5E5E5">
+                    <Label x:Name="elsoKiir" Content="" HorizontalAlignment="Left" Margin="193,63,0,0" VerticalAlignment="Top" Width="128" FontSize="14"/>
+                    <Label x:Name="utolsoKiir" Content="" HorizontalAlignment="Left" Margin="193,97,0,0" VerticalAlignment="Top" Width="128" FontSize="14"/>
+                    <RadioButton x:Name="elso" Content="Első jeladás" HorizontalAlignment="Left" Margin="58,69,0,0" VerticalAlignment="Top" Checked="elso_Checked" FontSize="18"/>
+                    <RadioButton x:Name="utolso" Content="Utolsó jeladás" HorizontalAlignment="Left" Margin="58,99,0,0" VerticalAlignment="Top" Checked="elso_Checked" FontSize="18"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="3.feladat">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="Az első szereplő autó rendszáma:" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top" FontSize="18" Width="387" Height="42"/>
+                    <ListView d:ItemsSource="{d:SampleData ItemCount=5}" Margin="0,99,0,0" Name="lista" Loaded="lista_Loaded" Background="#FFE5E5E5">
+
+                        <ListView.View>
+
+                            <GridView>
+                                <GridViewColumn/>
+                            </GridView>
+                        </ListView.View>
+                    </ListView>
+                    <Label x:Name="rendSzam" Content="" HorizontalAlignment="Left" Margin="307,10,0,0" VerticalAlignment="Top" FontSize="18" Width="192" Height="42"/>
+                    <Label Content="Jelzést adott:" HorizontalAlignment="Left" Margin="10,52,0,0" VerticalAlignment="Top" FontSize="18" Width="387" Height="42"/>
+
+                </Grid>
+            </TabItem>
+            <TabItem Header="4.feladat">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="Ora" HorizontalAlignment="Left" Margin="236,33,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98" Height="35" FontSize="22"/>
+                    <Button Content="Lekérdezés" HorizontalAlignment="Center" Margin="0,203,0,0" VerticalAlignment="Top" Width="322" Height="40" Click="Button_Click"/>
+                    <TextBlock x:Name="kiir" HorizontalAlignment="Center" Margin="0,267,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="574" Height="31" FontSize="18"/>
+                    <TextBox x:Name="Perc" HorizontalAlignment="Left" Margin="236,98,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="98" Height="35" FontSize="22"/>
+                    <Label Content="Óra:" HorizontalAlignment="Left" Margin="199,38,0,0" VerticalAlignment="Top"/>
+                    <Label Content="Perc:" HorizontalAlignment="Left" Margin="199,103,0,0" VerticalAlignment="Top"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="5.feladat">
+                <Grid Background="#FFE5E5E5" Loaded="Grid_Loaded">
+                    <Label Content="A legnagyobb sebesség: " HorizontalAlignment="Left" Margin="10,49,0,0" VerticalAlignment="Top" Width="208" FontSize="18"/>
+                    <Label x:Name="Sebesseg" Content="" HorizontalAlignment="Left" Margin="223,49,0,0" VerticalAlignment="Top" FontSize="18"/>
+                    <ListBox x:Name="Rendszamok" HorizontalAlignment="Left" Height="236" Margin="263,131,0,0" VerticalAlignment="Top" Width="295" d:ItemsSource="{d:SampleData ItemCount=5}" Background="#FFE5E5E5" BorderBrush="{x:Null}" FontSize="18"/>
+                    <Label Content="Autók ezzel a sebességgel:" HorizontalAlignment="Left" Margin="10,131,0,0" VerticalAlignment="Top" FontSize="18"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="6.feladat">
+                <Grid Background="#FFE5E5E5">
+                    <TextBox x:Name="Rendszam" HorizontalAlignment="Left" Margin="185,77,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="137" Height="31" FontSize="16"/>
+                    <Label Content="Rendszám:" HorizontalAlignment="Left" Margin="78,74,0,0" VerticalAlignment="Top" FontSize="18"/>
+                    <ListBox Margin="78,284,215,-88" BorderBrush="{x:Null}" Background="#FFE5E5E5"/>
+                    <Button Content="Lekérdezés" HorizontalAlignment="Left" Margin="418,77,0,0" VerticalAlignment="Top" Height="31" Width="119" Click="Button_Click_1"/>
+                    <ListBox x:Name="Utak" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="78,151,357,151"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="7.feladat">
+                <Grid Background="#FFE5E5E5">
+                    <Label Content="Autók első és utolsó jeladása" HorizontalAlignment="Left" Margin="26,22,0,0" VerticalAlignment="Top" FontSize="24"/>
+                    <ListBox x:Name="autokSzurt" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="26,98,212,-18" Background="#FFE5E5E5" BorderBrush="{x:Null}" FontSize="16"/>
+                    <Button Content="Lekérdez" HorizontalAlignment="Left" Margin="414,25,0,0" VerticalAlignment="Top" Width="137" Height="42" FontSize="18" Click="Button_Click_2"/>
+                    <Button Content="Fájlbaírás" HorizontalAlignment="Left" Margin="591,24,0,0" VerticalAlignment="Top" Width="138" Height="42" FontSize="18" Click="Button_Click_3"/>
+                </Grid>
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

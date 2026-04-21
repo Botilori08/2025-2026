@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <title>Képes gyakorlás</title>
+
+</head>
+<body>
+    <div id="doboz"></div>
+
+        </div>
+    </div>
+    <script>
+
+        let kepek = []; 
+        const megjelenit = document.getElementById("doboz")
+        // képes oldal, ha egy képre rákattintok az lejjebb megjelenik nagyobb méretben
+        // Gombra elkezdenek
+
+        document.body.onload = betolt();
+
+        function betolt()
+        {
+
+                for(let i = 0;i < 50;i++)
+                {
+                    kepek.push("/kepek/kep_"+i+".webp")
+                }
+
+                console.log(kepek)
+
+                /*let tablazat = document.createElement("table")
+                tablazat.id = "tablazat"
+
+                let sor = document.createElement("tr")
+                kepek.forEach((e,i)=>
+                {
+                    let cella = document.createElement("td")
+                    let kep = document.createElement("img")
+                    kep.src = e
+
+                    if(i%10 == 9)
+                    {
+                        tablazat.appendChild(sor)
+                        
+                        cella.appendChild(kep)
+                        sor.appendChild(cella)
+                        sor =document.createElement("tr")
+                        
+                    }
+                    else
+                    {
+                        sor.appendChild(cella)
+                    }
+                })
+
+                doboz.appendChild(tablazat)
+
+
+            */
+        }
+    </script>
+</body>
+</html>

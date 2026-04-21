@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>09.10.</title>
+</head>
+<body>
+
+    <input type="number" id="szam">
+
+    <button onclick="beker()">Hozzáad</button>
+
+    <div id="uzenet"></div>
+
+    <table id="tablazat" border="1"></table>
+
+    <script>
+
+        let szamok = [];
+        function beker()
+        {
+            const szam = document.getElementById("szam")
+
+            
+
+            if(szam.value >=0 && szam.value < 100)
+            {
+                szamok.push(parseInt(szam.value));
+            }
+            else
+            {
+                document.getElementById("uzenet").innerHTML="A megadott szám az értéhatáron kívül van"
+            }
+            //console.log(szamok);
+
+            let kivalogatott = [];
+
+            for(let i=0;i < 10;i++)
+            {
+                //kivalogatott.push(szamok.filter(e => e >=min && e<= max));
+                kivalogatott.push(szamok.filter(e => e >=i*10 && e<= i*10+9));
+                /*min+=10;
+                max+=10;*/
+            }
+
+            console.log(kivalogatott)
+            const tablazat = document.getElementById("tablazat")
+            tablazat.innerHTML = "";
+            kivalogatott.forEach(e => {
+                const sor = document.createElement("tr")
+                
+                e.forEach(f => {
+                    const oszlop = document.createElement("td")
+                    oszlop.innerHTML = f;
+                    sor.appendChild(oszlop);
+                })
+                tablazat.appendChild(sor);
+            })
+
+            
+
+
+
+
+        }
+
+
+
+
+
+
+    </script>
+</body>
+</html>

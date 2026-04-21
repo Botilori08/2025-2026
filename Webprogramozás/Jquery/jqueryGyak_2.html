@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JQuery</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+
+</head>
+<body>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-12 col-lg-4">
+                <button class="btn btn-primary" id="gomb1">Gomb</button>
+            </div>
+            <div class="col-12 col-lg-4">
+                <button class="btn btn-primary" id="gomb2">Gomb1</button>
+            </div>
+            <div class="col-12 col-lg-4">
+                <button class="btn btn-primary" id="gomb3">Gomb2</button>
+            </div>
+
+        </div>
+        <div class="row bg-danger text-white" id="doboz">Helló!</div>
+    </div>
+
+    <script>
+
+        /*
+        bootstrap
+        
+        div class conatiner
+            div class row
+                div class col-12 és col-lg-4
+                    button class btn btn-primary
+                div class col-12 és col-lg-4
+
+                div class col-12 és col-lg-4
+
+
+                még egy div
+
+                első gomb tüntesse el
+
+                második gomb mutassa meg
+
+                harmadik tüntesse el vagy hozza elő attól függően ott van-e
+                toggle
+        */
+
+         	
+
+        $( "#gomb1" ).on( "click", function() {
+            $( "#doboz" ).hide();
+        } );
+
+        $( "#gomb2" ).on( "click", function() {
+            $( "#doboz" ).show();
+        } );
+
+        $( "#gomb3" ).on( "click", function() {
+            $( "#doboz" ).toggle();
+        } );
+
+    </script>
+</body>
+</html>

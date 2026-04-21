@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>szovegbekeres</title>
+
+    <style>
+        input
+        {
+            margin:10px;
+            padding:5px;
+        }
+        button
+        {
+            padding:5px;
+        }
+    </style>
+</head>
+<body>
+    <input type="text" id="szoveg">
+    <button onclick="vizsgal()">Küldés</button>
+
+    <div id="kiir"></div>
+
+    <script>
+
+        function vizsgal()
+        {
+            let kiir = document.getElementById("kiir")
+            let szoveg = document.getElementById("szoveg")
+
+            kiir.innerHTML = "";
+
+            //óra:perc:másodperc
+            //09:03:13
+            /*let minta = /^([0-1]\d|2[0-3]):([0-5]\d):([0-5]\d)$/
+            if(minta.test(szoveg.value))
+            {
+                kiir.innerHTML = "Helyes a megadott formátum!"
+            }
+            else
+            {
+                kiir.innerHTML = "Nem helyes a megadott formátum!"
+            }*/
+
+            
+            let minta = /^\D*([0-1]\d|2[0-3]):([0-5]\d):([0-5]\d)\D*$/
+
+
+            //Házi feladat: Kiírni a szöveget
+            //Formátum pl: 12 óra 23 perc 34 másodperc
+
+
+
+            if(minta.test(szoveg.value))
+            {
+                kiir.innerHTML = "Van a szövegben dátum!"
+            }
+            else
+            {
+                kiir.innerHTML = "Nem helyes a megadott formátum!"
+            }
+
+        }
+
+    </script>
+
+</body>
+</html>

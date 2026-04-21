@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body>
+    <input type="text" id="nev" oninput="vizsgal()">
+
+    <script>
+
+
+    /*Bekérünk egy magyar nevet
+    Döntsük el gépelés közben helyes-e
+    Ha helyes fehér háttér, sötétzöld betű
+    Ha helyes piros háttér, fehér betű
+    */
+
+    function vizsgal()
+    {
+        const nev = document.getElementById("nev");
+
+        //Egy vezetéknév, egy keresztnév
+        let minta = /^([A-ZÖÜÓŐÚÁŰÉÍ][a-zöüóőúűáí]+)\s([A-ZÖÜÓŐÚÁŰÉÍ][a-zöüóőúáűí]+)|([A-ZÖÜÓŐÚÁŰÉÍ][a-zöüóőúűáí]+)\s([A-ZÖÜÓŐÚÁŰÉÍ][a-zöüóőúáűí]+)\s([A-ZÖÜÓŐÚÁŰÉÍ][a-zöüóőúáűí]+)|([A-ZÖÜÓŐÚÁŰÉÍ][a-zöüóőúűáí]+)-([A-ZÖÜÓŐÚÁŰÉÍ][a-zöüóőúűáí]+)\s([A-ZÖÜÓŐÚÁŰÉÍ][a-zöüóőúáűí]+)|([A-ZÖÜÓŐÚÁŰÉÍ][a-zöüóőúűáí]+)-([A-ZÖÜÓŐÚÁŰÉÍ][a-zöüóőúűáí]+)\s([A-ZÖÜÓŐÚÁŰÉÍ][a-zöüóőúáűí]+)\s([A-ZÖÜÓŐÚÁŰÉÍ][a-zöüóőúáűí]+)$/
+
+        if(minta.test(nev.value))
+        {
+            nev.style.color = "darkgreen"
+            nev.style.backgroundColor = "white"
+        }
+        else
+        {
+            nev.style.backgroundColor = "red"
+            nev.style.color = "white"
+        }
+    }
+
+    </script>
+
+</body>
+</html>

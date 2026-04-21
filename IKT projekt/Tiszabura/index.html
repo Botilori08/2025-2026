@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MMSZ Adatok</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body>
+
+    <div class="container">
+        <div class="row bg-danger"><h1>MMSZ Adatok</h1></div>
+        <div class="row">
+            <div class="col-lg-4 bg-warning">
+                <h2>1.feladat</h2>
+                <button type="button" onclick="feladat1()" class="btn btn-secondary">Végrehajt</button>
+            </div>
+            <div class="col-lg-8 fs-3">
+                A leggyakoribb családnév a(z): <span id="feladat1-eredmeny">Eredmény</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 bg-warning">
+                <h2>2.feladat</h2>
+                <button type="button" onclick="feladat2()" class="btn btn-secondary">Végrehajt</button>
+            </div>
+            <div class="col-lg-8 fs-3">
+                A leggyakoribb családnév a(z): <span id="feladat2-eredmeny">Eredmény</span>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4 bg-warning">
+                <h2>3.feladat</h2>
+                <button type="button" onclick="feladat3()" class="btn btn-secondary">Végrehajt</button>
+            </div>
+            <div class="col-lg-8 fs-3">
+                A leggyakoribb második utónév a(z): <span id="feladat3-eredmeny">Eredmény</span>
+            </div>
+        </div>
+    </div>
+
+    <script>
+
+        let adatok = [];
+
+        document.body.onload=betolt();
+
+        function betolt()
+        {
+            fetch("nevek.txt")
+            .then(x => x.text())
+            .then(y => 
+                {
+
+                    let sorok = y.split("\r\n");
+
+                    sorok.forEach(e =>
+                        {
+                            let elem = e.split(";");
+                            adatok.push({osztaly : elem[0],nev : elem[1],osztalyfonok : elem[2]})
+                        }
+                    )
+                    
+                    adatok.pop();
+
+                    console.log(adatok)
+                }
+            )
+        }
+
+
+        function feladat1()
+        {
+            let vezeteknevek = [];
+
+            
+            vezeteknevek = adatok.map(e => e.nev.split(" ")[0]);
+            
+
+            let vezeteknevStat = {};
+
+            vezeteknevek.forEach(e => 
+                {
+                    if(Object.keys(vezeteknevStat).includes(e))
+                    {
+                        vezeteknevStat[e]++;
+                    }
+                    else
+                    {
+                        vezeteknevStat[e] = 1;
+                    }
+                }
+            )
+
+            console.log(vezeteknevStat);
+
+            let legnagyobb;
+            let legtobb = 0;
+            Object.keys(vezeteknevStat).forEach(e =>
+               {
+                    if(vezeteknevStat[e] > legtobb)
+                    {
+                        legnagyobb = e;
+                        legtobb = vezeteknevStat[e];
+                    }
+               } 
+            )
+            console.log(legnagyobb);
+            
+            document.getElementById("feladat1-eredmeny").innerHTML = legnagyobb
+
+        }
+
+        function feladat2()
+        {
+            let keresztnevek = [];
+
+            
+            keresztnevek = adatok.map(e => e.nev.split(" ")[1]);
+            
+
+            let keresztnevStat = {};
+
+            keresztnevek.forEach(e => 
+                {
+                    if(Object.keys(keresztnevStat).includes(e))
+                    {
+                        keresztnevStat[e]++;
+                    }
+                    else
+                    {
+                        keresztnevStat[e] = 1;
+                    }
+                }
+            )
+
+            console.log(keresztnevStat);
+
+            let legnagyobb;
+            let legtobb = 0;
+            Object.keys(keresztnevStat).forEach(e =>
+               {
+                    if(keresztnevStat[e] > legtobb)
+                    {
+                        legnagyobb = e;
+                        legtobb = keresztnevStat[e];
+                    }
+               } 
+            )
+            console.log(legnagyobb);
+            
+            document.getElementById("feladat2-eredmeny").innerHTML = legnagyobb
+        }
+
+        function feladat3()
+        {
+            let ketkeresztnevuek = [];
+
+            adatok.forEach(e => {
+                if(e.nev.split(" ").length > 2)
+                {
+                    ketkeresztnevuek.push(e);
+                }
+            }
+            );
+            console.log(ketkeresztnevuek);
+
+
+
+            masodikUtonevek = ketkeresztnevuek.map(e => e.nev.split(" ")[2]);
+
+            utonevStat = {};
+
+            console.log(masodikUtonevek);
+            masodikUtonevek.forEach(e => 
+                {
+                    if(Object.keys(utonevStat).includes(e))
+                    {
+                        utonevStat[e]++;
+                    }
+                    else
+                    {
+                        utonevStat[e] = 1;
+                    }
+                }
+            );
+
+            let legtobb = "";
+            let legnagyobb = 0;
+            Object.keys(utonevStat).forEach(e =>
+                {
+                    if(utonevStat[e] > legnagyobb)
+                    {
+                        legtobb = e;
+                        legnagyobb = utonevStat[e];
+                    }
+                }
+            )
+
+            document.getElementById("feladat3-eredmeny").innerHTML = legtobb;
+        }
+        function feladat4()
+        {
+            
+        }
+
+    </script>
+</body>
+</html>

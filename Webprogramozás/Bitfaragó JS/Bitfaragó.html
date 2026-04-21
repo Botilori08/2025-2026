@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bitfaragó feladatok</title>
+</head>
+<body>
+    <h2>III. feladat</h2>
+    <button onclick="harmadikFeladat()">Végrehajt</button>
+    <div id="harmadik"></div>
+
+    <h2>IV. feladat</h2>
+    <div id="negyedik">
+        <button onclick="negyedikFeladat()">Végrehajt</button>
+    </div>
+
+    <h2>V. feladat</h2>
+    <input type="number" id="szam">
+    <button onclick="otodikFeladat()">Végrehajt</button>
+    <div id="otodik"></div>
+    
+
+
+    <script>
+
+        function harmadikFeladat()
+        {
+            harmadik.innerText = "";
+            const d = new Date();
+
+            console.log(d)
+
+            const span = document.createElement("span")
+
+            span.innerText = d;
+            harmadik.appendChild(span)
+        }
+
+        function negyedikFeladat()
+        {
+            const negyedik = document.getElementById("negyedik")
+
+            negyedik.removeChild(negyedik.firstElementChild);
+
+            const kep = document.createElement("img")
+            kep.src = "Ceratophrys_cornuta_-_1.jpg"
+            kep.style.width = "20%"
+            negyedik.appendChild(kep);
+        }
+
+        function otodikFeladat()
+        {
+            
+
+            let szamok = [];
+
+            const lista = document.createElement("ul")
+            const otodik = document.getElementById("otodik")
+
+            otodik.appendChild(lista);
+
+            let szam = 0;
+            while(szamok.length < 5)
+            {
+                szam = document.getElementById("szam").value
+                szamok.push(szam);
+                console.log(szamok);
+            }
+            
+        }
+
+    </script>
+</body>
+</html>

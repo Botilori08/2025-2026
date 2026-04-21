@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gyak</title>
+</head>
+<body>
+
+    <input type="number" id="szam">
+    <button onclick="feltolt()">Hozzáad</button>
+    <button onclick="egyebek()">Végrehajt</button>
+    
+
+    <div id="kiir"></div>
+
+    <script>
+
+        let szamok = [];
+
+        function feltolt()
+        {
+            const szam = document.getElementById("szam").value
+            if(szamok.length < 5)
+            {
+                szamok.push(szam)
+            }
+
+            console.log(szamok);
+
+            
+        }
+
+        function egyebek()
+        {
+            const kiir = document.getElementById("kiir")
+
+            //1. feladat: Számok átlaga
+
+            let osszeg = 0;
+            //console.log("sss")
+            //console.log(szamok)
+            szamok.forEach(e => osszeg+=Number(e))
+            //console.log(osszeg/szamok.length)
+
+            const atlag = document.createElement("span")
+            atlag.innerText = "A számok átlaga: "+osszeg/szamok.length
+            kiir.appendChild(atlag)
+
+
+            //2. feladat: legnagyobb, legkisebb számok kiírása
+
+            let legkisebb = szamok[0];
+            let legnagyobb = 0;
+
+            szamok.forEach(
+                function(e)
+                {
+                    if(e < legkisebb)
+                    {
+                        legkisebb = e;
+                    }
+                })
+
+            const legkisebbSzam = document.createElement("span");
+            legkisebbSzam.innerText = "A legkisebb szám: "+legkisebb;
+            kiir.appendChild(legkisebbSzam);
+            
+
+
+
+        }
+
+
+
+    </script>
+</body>
+</html>

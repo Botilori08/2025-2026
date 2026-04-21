@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Szamok</title>
+    <style>
+        table
+        {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+
+        tr
+        {
+            border: 1px solid black;
+        }
+    </style>
+</head>
+<body onload="betolt()">
+    <table id="tablazat"></table>
+    <script>
+
+        let szamok = [];
+        let tablazat = document.getElementById("tablazat")
+        function betolt()
+        {
+            fetch("szamok.json")
+            .then(x => x.json())
+            .then(y =>
+                {   
+                    szamok = y.numbers.map(e => parseInt(e));
+
+                    szamok = szamok.filter(e => 
+                        {
+                            return e%2 == 0
+                        }
+                    )
+
+                    console.log(szamok)
+                    szamok.forEach(e => {
+                        let sor = document.createElement("tr")
+                        sor.innerHTML = "<td>"+e+"</td>" 
+
+                        tablazat.appendChild(sor)
+                    });
+
+                    tablazat.innerHTML = tablakeszito(szamok,200);
+                    
+
+
+
+                }
+            )
+        }
+
+        function tablakeszito(tomb,szelesseg)
+        {
+            let visszaad = "";
+
+            tomb.forEach((e,index) => {
+                if(index%2 == 0)
+                {
+                    visszaad += "<tr><td style ='background-color: red'>"+e+"</td></tr>"
+                }
+                else
+                {
+                    visszaad += "<tr><td>"+e+"</td></tr>"
+                }
+                
+            });
+
+            tablazat.width = szelesseg+"px";
+
+            return visszaad;
+        }
+    </script>
+
+
+</body>
+</html>

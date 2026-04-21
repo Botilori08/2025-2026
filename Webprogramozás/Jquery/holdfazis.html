@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+</head>
+<body>
+    
+    <div>Idő: <span id="ido"></span></div>
+    <div>Holdfázis: <span id="holdfazis"></span>%</div>
+    <div>Változás: <span id="valtozas"></span></div>
+    <div><img src="" alt="hold" id="holdKep"></div>
+
+    <input type="month" id="honap">
+    <input type="date" id="datum">
+    <input type="time" id="oraperc">
+    <button onclick="kuldes()">Küldés</button>
+    
+    <script>
+    
+    let kepek = [];
+
+    function kuldes()
+    {
+
+        $.ajax({
+        url: "http://localhost/2025-26/Webprogramoz%C3%A1s/Jquery/index.php",
+        data: {
+            nap : $("#datum").val(),
+            ido: $("#oraperc").val()
+        },
+        success: function( result ) {
+            console.log(result)
+            $("#ido").text(result.idopont);
+            $("#holdfazis").text(result.holdfazis);
+            $("#valtozas").text(result.valtozas);
+            $("#holdKep").attr("src",result.kep)
+
+            if(result.idopont.split(" ")[0].split("-")[1] == $("#honap").val())
+            {
+                kepek.push(result.kep)
+            }
+
+            console.log(kepek)
+        
+            
+
+            
+        }
+        });
+    }
+
+    kuldes();
+    
+
+    </script>
+
+</body>
+</html>

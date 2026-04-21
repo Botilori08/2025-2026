@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RGB Színek</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <style>
+        td{
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: 0;
+        }
+    </style>
+
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <header class="col-12">
+                <h1 class="text-center">RGB Színek érettségi feladat</h1>
+            </header>
+        </div>
+        <div class="col-12 container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <h2 class="text-center">Kép:</h2>
+                    <div id="kep">
+                        <table>
+
+                        </table>
+                    </div>
+                </div>
+                <div class="col-4 container">
+                    <div class="row">
+                        <div class="col-12">
+                            <h2>1. feladat</h2>
+                            <div>Szöveg: <span id="feladat1-eredmeny">eredmény</span></div>
+                            <div class="text-center"><button class="btn btn-info" type="button" onclick="feladat1()">Végrehajtás</button></div>
+                        </div>
+                        <div class="col-12">
+                            <h2>2. feladat</h2>
+                            <div>
+                                <label for="sorszam">Sor száma:</label>
+                                <input type="number" id="sorSzam" min="1" max="360" class="form-control">
+                            </div>
+                            <div>
+                                <label for="oszlopSzam">Oszlop száma:</label>
+                                <input type="number" id="oszlopSzam" min="1" max="640" class="form-control">
+                            </div>
+                            <div class="text-center"><button class="btn btn-info" type="button" onclick="feladat2()">Végrehajtás</button></div>
+
+                            <div>Eredmeny: <span id="feladat2-eredmeny">eredmény</span></div>
+                        </div>
+
+                        <div class="col-12">
+                            <h2>3. feladat</h2>
+                            <div>Világos pixelek száma: <span id="feladat3-eredmeny">eredmény</span></div>
+                            <div class="text-center"><button class="btn btn-info" type="button" onclick="feladat3()">Végrehajtás</button></div>
+                        </div>
+                        <div class="col-12">
+                            <h2>4. feladat</h2>
+                            <div>Legsötétebb pixelek összege: <span id="feladat4-eredmeny">eredmény</span></div>
+                            <div>Legsötétebb pixelek listája: <span id="feladat4-lista">eredmény</span></div>
+                            <div class="text-center"><button class="btn btn-info" type="button" onclick="feladat4()">Végrehajtás</button></div>
+                        </div>
+ 
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <footer class="col-12 text-center">
+            Loru 2026.03.16.
+        </footer>
+
+    </div>
+    
+    <script src="script.js"></script>
+</body>
+</html>

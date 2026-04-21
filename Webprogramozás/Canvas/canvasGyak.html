@@ -1,0 +1,70 @@
+<!DOCTYPE HTML>
+<html>
+<body>
+<h1>HTML5 Canvas - Draw a Line</h1>
+<title>Canvas gyak</title>
+
+<canvas id="myCanvas" width="500" height="500" style="border:1px solid #000000;">
+
+</canvas>
+
+<script>
+    let elozo=[0,0];
+    let lastX = null;
+    let lastY = null;
+
+    function rajzol() {
+        
+        const canvas = document.getElementById("myCanvas");
+        const ctx = canvas.getContext("2d");
+        ctx.clearRect(0,0,500,500);
+
+        ctx.beginPath();
+
+        ctx.moveTo(...elozo);
+        const R = 20;
+
+        let dx = 1000;
+        let dy = 1000;
+        while(elozo[0]+dx< 0 || elozo[0]+dx>=500 || elozo[1]+dy<0 || elozo[1]+dy >=500)
+        {
+            dx= Math.floor(Math.random()*2*R-R);
+            dy= Math.sqrt(R*R - dx*dx) * (Math.random() < 0.5 ? -1:1);
+
+        }
+
+        elozo[0] += dx;
+        elozo[1] += dy;
+
+        ctx.lineTo(...elozo);
+
+        ctx.stroke();
+
+        
+
+        }
+        /*
+        
+        if (lastX === null || lastY === null) {
+            lastX = Math.floor(Math.random() * 500);
+            lastY = Math.floor(Math.random() * 500);
+        }
+
+        
+        let x = Math.floor(Math.random() * 500);
+        let y = Math.floor(Math.random() * 500);
+
+        ctx.moveTo(lastX, lastY);
+        ctx.lineTo(x, y);
+        ctx.stroke();
+
+       
+        lastX = x;
+        lastY = y;
+    }
+        */
+    setInterval(rajzol, 1000);
+</script>
+
+</body>
+</html>

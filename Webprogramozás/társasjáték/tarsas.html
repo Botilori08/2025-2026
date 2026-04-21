@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Társasjáték</title>
+    <script src="https://code.jquery.com/jquery-4.0.0.js" integrity="sha256-9fsHeVnKBvqh3FB2HYu7g2xseAZ5MlN6Kz/qnkASV8U=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+
+    
+</head>
+<body>
+    <div class="col-12 bg-primary p-3">Társasjáték</div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 bg-info pb-2 border border-dark">
+                <h3>2.feladat</h3>
+                <button type="button" onclick="feladat2()" class="btn btn-primary">Végrehajt</button>
+            </div>
+            <div class="col-lg-6 bg-secondary text-white border border-dark">
+                <p>Dobások száma: <span id="f2dobas">Eredmeny</span></p>
+                <p>Az ösvények száma: <span id="f2osveny">Eredmeny</span></p>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 bg-info pb-2 border border-dark">
+                <h3>3.feladat</h3>
+                <button type="button" onclick="feladat3()" class="btn btn-primary">Végrehajt</button>
+            </div>
+            <div class="col-lg-6 bg-secondary text-white border border-dark">
+                <p>Az egyik leghosszabb a(z) <span id="f3szama"></span> ösvény, hossza: <span id="f3"></span></p>
+   
+            </div>
+        </div>
+        <div class="row">
+                <div class="col-lg-12 bg-info pb-2 border border-dark">
+                    <h3>4.feladat</h3>
+                    <input type="number" class="input-group-mb2" id="sorszam">
+                    <input type="number" class="input-group-mb2" id="jatekosSzam">
+                
+                    <button type="button" onclick="feladat4()" class="btn btn-primary">Beküldés</button><br>
+                    <span id="valasz" class="text-danger"></span>
+    
+                </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 bg-info pb-2 border border-dark">
+                <h3>5.feladat</h3>
+                <button type="button" onclick="feladat5()" class="btn btn-primary">Lekérdezés</button>
+            </div>
+            <div class="col-lg-6 bg-secondary text-white border border-dark" id="statisztika">
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-6 bg-info pb-2 border border-dark">
+                <h3>6.feladat</h3>
+                <button type="button" onclick="feladat6()" class="btn btn-primary">Lekérdezés</button>
+            </div>
+            <div class="col-lg-6 bg-secondary text-white border border-dark" id="statisztika">
+            </div>
+        </div>
+        </div>
+
+    <script>
+
+        
+        let sorszam;
+        let jatekosSzam;
+        let dobasok = [];
+        let osvenyek = [];
+
+        function betolt()
+        {
+            fetch("dobasok.txt")
+            .then(x => x.text())
+            .then(y => {
+                dobasok = y.split(" ").map(e => parseInt(e));
+                console.log(dobasok)
+            })
+
+            fetch("osvenyek.txt")
+            .then(x => x.text())
+            .then(y => {
+                osvenyek = y.split("\r\n");
+                osvenyek.pop();
+                console.log(osvenyek)
+            })
+
+            
+        }
+
+        function feladat2()
+        {
+            $("#f2dobas").html(dobasok.length);
+            $("#f2osveny").html(osvenyek.length);
+        }
+
+        function feladat3()
+        {
+            //let max = Math.max(...osvenyek.map(x => x.length));
+            
+            //let helye = osvenyek.map(x => x.length).indexOf(max);
+
+            let legnagyobb = 0;
+            let legnagyobbHelye = 0;
+
+            let hosszok = osvenyek.map(e => e.length);
+
+            console.log(hosszok)
+
+            hosszok.forEach((e,index) => {
+                if(e > legnagyobb)
+                {
+                    legnagyobb = e;
+                    legnagyobbHelye = index+1;
+                }
+            })
+
+            console.log(legnagyobb,legnagyobbHelye)
+
+            $("#f3szama").html(legnagyobbHelye+".");
+            $("#f3").html(legnagyobb);
+        }
+
+        function feladat4()
+        {
+            if($("#jatekosSzam").val() < 2 || $("#jatekosSzam").val() > 5)
+            {
+                $("#valasz").html("Nem megfelelő adat!")
+                
+            }
+            else
+            {
+                $("#valasz").html("");
+                jatekosSzam = $("#jatekosSzam").val();
+            }
+
+            sorszam = $("#sorszam").val();
+            console.log(sorszam,jatekosSzam)
+
+        }
+
+        function feladat5()
+        {
+            let kivalasztottOsveny = osvenyek[sorszam-1];
+
+            console.log(kivalasztottOsveny)
+
+            let Mszam = kivalasztottOsveny.split("").filter(e => e == "M").length;
+            let Vszam = kivalasztottOsveny.split("").filter(e => e == "V").length;
+            let Eszam = kivalasztottOsveny.split("").filter(e => e == "E").length;
+            
+            let stat = document.getElementById("statisztika");
+
+            stat.innerHTML += `<div>M: ${Mszam} darab</div>`;
+            stat.innerHTML += `<div>V: ${Vszam} darab</div>`;
+            stat.innerHTML += `<div>E: ${Eszam} darab</div>`;
+
+
+            console.log(Mszam,Vszam,Eszam)
+        }
+
+        betolt();
+    </script>
+
+</body>
+</html>

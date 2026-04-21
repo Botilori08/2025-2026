@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+
+    <style>
+
+        input
+        {
+            padding: 5px;
+        }
+        label
+        {
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+        }
+        button{
+            padding: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <label for="username">Felhasználónév</label>
+    <input type="text" id="username"><br>
+    <label for="jelszo">Jelszó</label>
+    <input type="password" id="jelszo"><br>
+    <label for="jelszoUjra">Jelszó ismét</label>
+    <input type="password" id="jelszoUjra"><br>
+    <button onclick="vizsgal()">Ellenőriz</button>
+
+
+    <script>
+
+        let nev = document.getElementById("username")
+
+        function vizsgal()
+        {
+
+            let nevek = [["lorilori",true],
+                ["lori",false],
+                ["lori1",true],
+                ["boti-lori",false],
+                ["botilori!",false],
+                ["012345",true],
+                ["boti.lori",false],
+                ["boti_lori",false]
+            ]
+
+            let mintaNev = /^[a-z0-9]{5,}$/i
+
+            nevek.forEach(e => {
+
+                if(mintaNev.test(e[0]) == e[1])
+                {
+                    console.log(mintaNev.test(e[0]) == e[1])
+                }
+                else
+                {
+                    console.log(e)
+                }
+            }
+            )
+
+            let jelszo = /^\w\$@!-\.{8,}$/i
+
+            let jelszavak = [["adadfggfd01@",true],
+                ["lori",false],
+                ["etsedgsgv_34",true],
+                ["jfgkjgfktkfg56@34",true],
+                ["dsafesggvdrbvyd$ff23",true],
+                ["012345",false],
+                ["maregyhetecsakamamaragondolok",false],
+                ["boti_lori",false]
+            ]
+
+            jelszavak.forEach(e => {
+
+                if(mintaNev.test(e[0]) == e[1])
+                {
+                    console.log(mintaNev.test(e[0]) == e[1])
+                }
+                else
+                {
+                    console.log(e)
+                }
+            }
+            )
+            
+
+        }
+
+    </script>
+
+</body>
+</html>

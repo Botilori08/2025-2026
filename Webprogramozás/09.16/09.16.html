@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        .szinesbox
+        {
+            height:15px;
+            width:15px;
+            display: inline-block;
+
+        }
+    </style>
+</head>
+<body onload="szinkeszito()">
+
+    <div id="szinesdobozok"></div>
+
+    <script>
+        //130 elemű Tömb amiben vannak objektumok
+        //R, G, B tulajdonság property 0,255 közötti véletlen szám
+        //15*15 négyzetekben megjeleníteni a színeket
+        // Keressük meg a legsötétebb (komponens összeg a legkisebb)
+
+        let szinek = [];
+        
+        function szinkeszito()
+        {
+            let R = Math.floor(Math.random()*256);
+            let G = Math.floor(Math.random()*256);
+            let B = Math.floor(Math.random()*256);
+
+            return R + ","+G+","+B
+
+        }
+
+        function komponensOsszeg(kod)
+        {
+            const rgbkod = kod.split(",");
+
+            let R = rgbkod[0];
+            let G = rgbkod[1];
+            let B = rgbkod[2];
+
+            const osszeg = R + G + B;
+
+            return osszeg;
+        }
+
+        for(let i = 0; i < 130;i++)
+        {
+            szinek.push(szinkeszito());
+        }
+
+        console.log(szinek)
+        
+        for(let i = 0;i < szinek.length;i++)
+        {
+            const dobozka = document.createElement("div");
+            dobozka.style.backgroundColor = "rgb("+szinek[i]+")";
+            dobozka.className = "szinesbox"
+            szinesdobozok.appendChild(dobozka);
+        }
+
+        let temp = komponensOsszeg(szinek[0])
+        let kodja = "";
+        for(let i =0; i < szinek.length;i++)
+        {
+            if(komponensOsszeg(szinek[i]) < temp)
+            {
+                kodja = szinek[i];
+            }
+        }
+
+        document.body.style.backgroundColor = "rgb("+kodja+")";
+
+
+
+
+
+    </script>
+</body>
+</html>

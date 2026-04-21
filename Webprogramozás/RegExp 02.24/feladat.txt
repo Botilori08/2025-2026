@@ -1,0 +1,13 @@
+név
+kettő jelszó
+egyik a jelszó másik az ellenőrzés
+Ha jó (megegyeznek) legyen zöld a form háttere
+Név \w
+jelszó: angol ABC kis-nagy, számok speciális karakterek .!_-$@ 
+	legalább nyolc karakter
+	mindegyiknek kell benne szerepelni
+
++feladat 
+név ne lehessen benne
+
+

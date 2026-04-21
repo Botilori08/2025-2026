@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+    <style>
+        #haz
+        {
+            display: block;
+            margin: auto;
+            background-image: url(./b3af6268-bc65-4a1c-bb59-e41ee09d7353_1500x844.jpg);
+            background-repeat: no-repeat;
+            background-size: cover;
+            height: 600px;
+            width:1200px
+        }
+
+        #kevin
+        {
+            height: 100px;
+            width:150px;
+            position: relative;
+            top: 0px;
+            left: 0px;
+        }
+
+    </style>
+</head>
+<body>
+
+    <span id="pontszam"></span>
+    <div id="haz"></div>
+
+    <script>
+
+        document.body.onload = kevinesJatek()
+
+        function kevinesJatek()
+        {
+
+            let haz = document.getElementById("haz")
+
+            setInterval(kevinKeszito(),100)
+
+
+
+        }
+
+        function kevinKeszito()
+        {
+            let kevin = document.createElement("img")
+            kevin.id = "kevin"
+            kevin.src = "./kevin.png"
+            kevin.style.top = Math.floor(Math.random()*500)
+            kevin.style.left = Math.floor(Math.random()*1050)
+
+            setTimeout(function() {haz.appendChild(kevin)},20)
+            
+            console.log("Hello")
+        }
+
+
+    </script>
+</body>
+</html>

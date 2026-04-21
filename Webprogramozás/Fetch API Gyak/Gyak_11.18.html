@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title></title>
+</head>
+<body onload="betolt()">
+    <script>
+        //Adatok közül legnagyobb dátum
+        //Átlagos szélnagyság
+        //Keressük meg melyek azok a napok amikor az átlag szélirányhoz a legközelebb van
+        //Havi átlag, táblázat szerű megjelenítés
+        let adatok = {};
+
+
+        function betolt()
+        {
+            fetch("adatok.csv")
+            .then(x => x.text())
+            .then(adat => {
+
+                let sorok = adat.split("\r\n");
+
+
+                let datumok = sorok.map(e => 
+                {
+                    let oszlopok = e.split(";");
+                    adatok.push({datum:oszlopok[0],szel:parseInt(oszlopok[1])})
+                })
+
+
+                console.log(adatok)
+
+            })
+        }
+
+    </script>
+    
+</body>
+</html>

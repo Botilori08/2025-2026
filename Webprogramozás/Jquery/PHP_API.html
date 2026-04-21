@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PHP API</title>
+    <script src="https://code.jquery.com/jquery-3.7.1.js" integrity="sha256-eKhayi8LEQwp4NKxN+CfCh+3qOVUtJn3QNZ0TciWLP4=" crossorigin="anonymous"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+
+    <style>
+        #kiir
+        {
+            height: 100px;
+            width: 100px;
+            margin:auto;
+            text-align: center;
+            background-color: red;
+            color: white;
+
+        }
+    </style>
+
+
+</head>
+<body> 
+    <div class="container">
+        <div class="row col-12 bg-primary">
+
+        </div> 
+        
+        
+            <label for="elsoSzam">Első szám</label>
+            <input type="text" id="elsoSzam" class="form-control">
+            <label for="masodikSzam">Második szám</label>            
+            <input type="text" id="masodikSzam" class="form-control">
+            <label for="masodikSzam">Művelet</label>  
+
+            <select name="muveletek" id="muvelet" class="form-select">
+                <option value="osszeadas">összeadás</option>
+                <option value="kivonas">kivonás</option>
+                <option value="szorzas">szorzás</option>
+            </select>
+
+            <button id="gomb" class="btn btn-primary">Küldés</button>
+
+        <div class="row col-12">
+            <div id="kiir"></div>
+        </div>
+
+    </div>
+
+    <script>
+    
+    //mini bootstrap űrlap 2 szám lehessen nem egész is
+    //jquery-vel küldjük el
+    //A választ jelenítsük meg egy nagy piros téglalapban
+    
+    $("#gomb").on("click",function()
+    {
+        var elsoSzam = parseFloat($("#elsoSzam").val());
+
+         	
+
+        $.ajax({
+        url: "miniAPI.php",
+        data: {
+            a : parseFloat($("#elsoSzam").val()),
+            b : parseFloat($("#masodikSzam").val()),
+            muvelet: $("#muvelet").val()
+        },
+        success: function(result)
+        {
+            $("#kiir").text(result)
+            console.log(result)
+        }
+        
+        })
+
+    })
+    
+
+    </script>
+</body>
+</html>
