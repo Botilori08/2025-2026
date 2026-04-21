@@ -20,7 +20,7 @@
         <TextBox x:Name="Ido" HorizontalAlignment="Left" Margin="506,90,0,0" TextWrapping="Wrap" VerticalAlignment="Top" Width="127" Height="25" FontSize="16" KeyUp="Ido_KeyUp"/>
         <Label Content="Idő:" HorizontalAlignment="Left" Margin="471,89,0,0" VerticalAlignment="Top"/>
         <Button x:Name="keres" Content="Keres" HorizontalAlignment="Left" Margin="645,92,0,0" VerticalAlignment="Top" Width="39" Click="keres_Click"/>
-        <ListBox x:Name="f7kiir" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="506,147,0,209" HorizontalAlignment="Left" Width="263" BorderBrush="{x:Null}" Background="#FFA1C4C8"/>
+        <ListBox x:Name="f7kiir" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="526,147,0,285" HorizontalAlignment="Left" Width="243" BorderBrush="{x:Null}" Background="#FFA1C4C8"/>
         <Label Content="8. feladat" HorizontalAlignment="Left" Margin="423,335,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="A napi bevétel:" HorizontalAlignment="Left" Margin="428,395,0,0" VerticalAlignment="Top"/>
         <Label x:Name="f8kiir" Content="" HorizontalAlignment="Left" Margin="521,391,0,0" VerticalAlignment="Top" FontSize="18"/>
@@ -29,6 +29,9 @@
         <ComboBox x:Name="Jarmuvalaszt" HorizontalAlignment="Left" Margin="86,483,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="Jarmuvalaszt_SelectionChanged"/>
         <Label Content="Jármű:" HorizontalAlignment="Left" Margin="36,481,0,0" VerticalAlignment="Top"/>
         <ListBox x:Name="f9eredmeny" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="36,519,445,16" Background="{x:Null}" BorderBrush="{x:Null}"/>
+        <Label Content="10. feladat" HorizontalAlignment="Left" Margin="418,440,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label x:Name="f10eredmeny" Content="" HorizontalAlignment="Left" Margin="423,537,0,0" VerticalAlignment="Top"/>
+        <Button Content="Statisztika készítése" HorizontalAlignment="Left" Margin="423,492,0,0" VerticalAlignment="Top" Click="Button_Click_2" Width="120"/>
 
     </Grid>
 </Window>
