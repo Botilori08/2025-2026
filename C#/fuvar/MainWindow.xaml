@@ -5,12 +5,21 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:fuvar"
         mc:Ignorable="d"
-        Title="Fuvar infojegyzet feladat" Height="450" Width="800" Loaded="Window_Loaded">
+        Title="Fuvar infojegyzet feladat" Height="498" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Label Content="3. feladat" HorizontalAlignment="Left" Margin="29,17,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Fuvarok száma: " HorizontalAlignment="Left" Margin="29,64,0,0" VerticalAlignment="Top"/>
         <Label x:Name="f3Eredmeny" Content="" HorizontalAlignment="Left" Margin="123,64,0,0" VerticalAlignment="Top"/>
         <Button x:Name="f3" Content="Keres" HorizontalAlignment="Left" Margin="132,24,0,0" VerticalAlignment="Top" Width="38" Click="f3_Click"/>
+        <ComboBox x:Name="f4Lista" HorizontalAlignment="Left" Margin="81,197,0,0" VerticalAlignment="Top" Width="120" SelectionChanged="f4Lista_SelectionChanged"/>
+        <Label Content="4. feladat" HorizontalAlignment="Left" Margin="31,148,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Label Content="Taxis:" HorizontalAlignment="Left" Margin="31,195,0,0" VerticalAlignment="Top"/>
+        <Label Content="Bevétel ($):" HorizontalAlignment="Left" Margin="213,195,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="Bevetel" Content="" HorizontalAlignment="Left" Margin="286,195,0,0" VerticalAlignment="Top"/>
+        <Label Content="Fuvarszám" HorizontalAlignment="Left" Margin="213,226,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="FuvarSzam" Content="" HorizontalAlignment="Left" Margin="286,226,0,0" VerticalAlignment="Top"/>
+        <Label Content="5. feladat" HorizontalAlignment="Left" Margin="31,276,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <ListBox x:Name="f5Eredmeny" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="31,334,465,-19" Background="{x:Null}" BorderBrush="{x:Null}"/>
 
     </Grid>
 </Window>
