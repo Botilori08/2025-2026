@@ -71,6 +71,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "szallitoszalag", "szallitos
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "VizibicikliKolcsonzo", "VizibicikliKolcsonzo\VizibicikliKolcsonzo.csproj", "{CAD6FC34-FB21-4DBA-A53C-2B6A2104699E}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fuvar", "fuvar\fuvar.csproj", "{15580053-829A-43F5-87D6-6EEDBF9C5513}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -213,6 +215,10 @@ Global
 		{CAD6FC34-FB21-4DBA-A53C-2B6A2104699E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CAD6FC34-FB21-4DBA-A53C-2B6A2104699E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CAD6FC34-FB21-4DBA-A53C-2B6A2104699E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15580053-829A-43F5-87D6-6EEDBF9C5513}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15580053-829A-43F5-87D6-6EEDBF9C5513}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15580053-829A-43F5-87D6-6EEDBF9C5513}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15580053-829A-43F5-87D6-6EEDBF9C5513}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
