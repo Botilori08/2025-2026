@@ -84,7 +84,37 @@ namespace fuvar
             */
         }
 
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            var eredmeny = fuvarok.GroupBy(e => e.fizetesMod).Select(e => $"{e.Key}: {e.Count()}");
+
+            f5Eredmeny.ItemsSource = eredmeny;
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            f6Kiir.Content = $"{fuvarok.Sum(x => x.tavolsagKmben):0.00}";
+        }
+
+        private void feladat7_Click(object sender, RoutedEventArgs e)
+        {
+            var legnagyobb = fuvarok.OrderByDescending(e => e.idoTartam).First();
+
+            eredmeny7.Content = $"Fuvar hossza {legnagyobb.idoTartam} másodperc {Environment.NewLine}" +
+                $"Taxi azonosító: {legnagyobb.azonosito}{Environment.NewLine}" +
+                $"Viteldij: {legnagyobb.viteldij} $";
 
 
+
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            var hibasak = fuvarok.Where(x => x.idoTartam > 0 && x.viteldij > 0 && x.tavolsag == 0);
+            
+
+        }
     }
+
 }
