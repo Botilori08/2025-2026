@@ -23,7 +23,7 @@
         <Button Content="Lekérdezés" HorizontalAlignment="Left" Margin="132,283,0,0" VerticalAlignment="Top" Click="Button_Click"/>
         <Label Content="6. feladat" HorizontalAlignment="Left" Margin="332,276,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label x:Name="f6eredmeny" Content="Összesen megtett út:" HorizontalAlignment="Left" Margin="335,322,0,0" VerticalAlignment="Top"/>
-        <Button Content="kiszámol" HorizontalAlignment="Left" Margin="438,283,0,0" VerticalAlignment="Top" Click="Button_Click_1"/>
+        <Button Content="Kiszámol" HorizontalAlignment="Left" Margin="438,283,0,0" VerticalAlignment="Top" Click="Button_Click_1" Width="65"/>
         <Label x:Name="f6Kiir" Content="" HorizontalAlignment="Left" Margin="470,322,0,0" VerticalAlignment="Top"/>
         <Label Content="7. feladat" HorizontalAlignment="Left" Margin="29,467,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Button x:Name="feladat7" Content="Lekérdezés" HorizontalAlignment="Left" Margin="128,476,0,0" VerticalAlignment="Top" Width="73" Click="feladat7_Click"/>

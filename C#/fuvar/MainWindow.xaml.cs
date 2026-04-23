@@ -86,7 +86,7 @@ namespace fuvar
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            var eredmeny = fuvarok.GroupBy(e => e.fizetesMod).Select(e => $"{e.Key}: {e.Count()}");
+            var eredmeny = fuvarok.GroupBy(x => x.fizetesMod).Select(e => $"{e.Key}: {e.Count()}").ToList();
 
             f5Eredmeny.ItemsSource = eredmeny;
 
@@ -111,9 +111,11 @@ namespace fuvar
 
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
-            var hibasak = fuvarok.Where(x => x.idoTartam > 0 && x.viteldij > 0 && x.tavolsag == 0);
+            var hibasak = fuvarok.Where(x => x.idoTartam > 0 && x.viteldij > 0 && x.tavolsag == 0).Select(x => x.ToString()).ToList();
             
             f8eredmeny.ItemsSource = hibasak;
+
+            File.WriteAllLines("hibasak.txt", hibasak);
 
         }
     }
