@@ -113,6 +113,7 @@ namespace fuvar
         {
             var hibasak = fuvarok.Where(x => x.idoTartam > 0 && x.viteldij > 0 && x.tavolsag == 0);
             
+            f8eredmeny.ItemsSource = hibasak;
 
         }
     }

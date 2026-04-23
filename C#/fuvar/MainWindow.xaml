@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:fuvar"
         mc:Ignorable="d"
-        Title="Fuvar infojegyzet feladat" Height="779" Width="800" Loaded="Window_Loaded">
+        Title="Fuvar infojegyzet feladat" Height="956" Width="800" Loaded="Window_Loaded">
     <Grid>
         <Label Content="3. feladat" HorizontalAlignment="Left" Margin="29,17,0,0" VerticalAlignment="Top" FontSize="18"/>
         <Label Content="Fuvarok száma: " HorizontalAlignment="Left" Margin="29,64,0,0" VerticalAlignment="Top"/>
@@ -29,9 +29,9 @@
         <Button x:Name="feladat7" Content="Lekérdezés" HorizontalAlignment="Left" Margin="128,476,0,0" VerticalAlignment="Top" Width="73" Click="feladat7_Click"/>
         <Label Content="A leghosszabb fuvar adatai:" HorizontalAlignment="Left" Margin="29,514,0,0" VerticalAlignment="Top"/>
         <Label x:Name="eredmeny7" Content="" HorizontalAlignment="Left" Margin="189,514,0,0" VerticalAlignment="Top"/>
-        <Label Content="8. feladat" HorizontalAlignment="Left" Margin="29,610,0,0" VerticalAlignment="Top" FontSize="18"/>
-        <Button Content="Keresés" HorizontalAlignment="Left" Margin="132,617,0,0" VerticalAlignment="Top" Width="69" Click="Button_Click_2"/>
-        <Label Content="Label" HorizontalAlignment="Left" Margin="29,664,0,0" VerticalAlignment="Top"/>
+        <Label Content="8. feladat" HorizontalAlignment="Left" Margin="31,603,0,0" VerticalAlignment="Top" FontSize="18"/>
+        <Button Content="Keresés" HorizontalAlignment="Left" Margin="141,610,0,0" VerticalAlignment="Top" Width="69" Click="Button_Click_2"/>
+        <ListBox x:Name="f8eredmeny" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="31,644,312,0" BorderBrush="{x:Null}"/>
 
     </Grid>
 </Window>
