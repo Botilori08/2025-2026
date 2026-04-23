@@ -20,38 +20,60 @@
 
 </head>
 <body onload="alert()">
-    <div class="bg-danger mb-0"><h1>MMSZ Adatok</h1></div>
+    <div class="bg-danger mb-0 text-white"><p>MMSZ Adatok</p></div>
 
     <div class="container">
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 pt-2">
                 <h2>1.feladat</h2>
                 A leggyakoribb családnév a(z): <span id="feladat1-eredmeny" class="bg-warning text-white p-1">Eredmény</span>
             </div>
 
         </div>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 pt-2">
                 <h2>2.feladat</h2>
                 A leggyakoribb családnév a(z): <span id="feladat2-eredmeny" class="bg-success text-white p-1">Eredmény</span>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 pt-2">
                 <h2>3.feladat</h2>
                 A leggyakoribb második utónév a(z): <span id="feladat3-eredmeny" class="bg-primary text-white p-1">Eredmény</span>
             </div>
         </div>
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-6 pt-2">
                 <h2>4.feladat</h2>
                 A leggyakoribb utolsó utónév a(z): <span id="feladat4-eredmeny" class="bg-danger text-white p-1">Eredmény</span>
             </div>
         </div>
 
         <div class="row">
-            <div class="col-lg-6">
+            <div class="col-lg-8 pt-2">
                 <h2>5.feladat</h2>
+                <h3>Rendezése</h3>
+                <input type="radio" class="form-check-input" id="ABCszerint" name="valaszt">
+                <label for="ABCszerint" class="form-check-label">Nevek szerint (ABC)</label>
+
+                <input type="radio" class="form-check-input" id="novekvoSorrend" name="valaszt">
+                <label for="novekvoSorrend" class="form-check-label">Darabszám szerint (növekvő)</label>
+
+                <input type="radio" class="form-check-input" id="csokkenoSorrend" name="valaszt">
+                <label for="csokkenoSorrend" class="form-check-label">Darabszám szerint (csökkenő)</label>
+
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Családnév</th>
+                            <th scope="col">Darabszám</th>
+                        </tr>
+
+                    </thead>
+                    <tbody id="f5Tabla">
+                        
+                    </tbody>
+                </table>
             </div>
         </div>
     </div>
@@ -86,6 +108,7 @@
                         feladat2();
                         feladat3();
                         feladat4();
+                        feladat5();
                 }
             )
 
@@ -268,6 +291,56 @@
             
             document.getElementById("feladat4-eredmeny").innerHTML = legnagyobb
         }
+
+        function feladat5()
+        {
+            let csaladnevek = [];
+
+                        let vezeteknevek = [];
+
+            
+            csaladnevek = adatok.map(e => e.nev.split(" ")[0]);
+            
+
+            let csaladnevStat = {};
+
+            csaladnevek.forEach(e => 
+                {
+                    if(Object.keys(csaladnevStat).includes(e))
+                    {
+                        csaladnevStat[e]++;
+                    }
+                    else
+                    {
+                        csaladnevStat[e] = 1;
+                    }
+                }
+            )
+
+            let tabla = document.getElementById("f5Tabla");
+
+            f5Tabla.innerHTML = "";
+
+            Object.keys(csaladnevStat).forEach(e =>
+                {
+                    let sor = document.createElement("tr");
+
+                    let cella = document.createElement("td");
+                    cella.innerHTML = e;
+                    sor.appendChild(cella);
+
+                    cella = document.createElement("td");
+                    cella.innerHTML = csaladnevStat[e];
+                    sor.appendChild(cella);
+
+                    tabla.appendChild(sor);
+                                        
+
+                }
+            )
+
+        }
+
 
     </script>
 </body>
