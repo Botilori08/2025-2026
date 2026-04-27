@@ -75,6 +75,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "fuvar", "fuvar\fuvar.csproj
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "nyelvvizsga", "nyelvvizsga\nyelvvizsga.csproj", "{1375476A-DDF0-4495-A6E3-E2CA7BA582FF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vernyomas", "Vernyomas\Vernyomas.csproj", "{63A590FA-393E-493F-A30B-D0EA05B77B35}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -225,6 +227,10 @@ Global
 		{1375476A-DDF0-4495-A6E3-E2CA7BA582FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1375476A-DDF0-4495-A6E3-E2CA7BA582FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1375476A-DDF0-4495-A6E3-E2CA7BA582FF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{63A590FA-393E-493F-A30B-D0EA05B77B35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{63A590FA-393E-493F-A30B-D0EA05B77B35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{63A590FA-393E-493F-A30B-D0EA05B77B35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{63A590FA-393E-493F-A30B-D0EA05B77B35}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
