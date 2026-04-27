@@ -56,24 +56,6 @@ namespace Vernyomas
             }
 
 
-            try
-            {
-                napSzama = Convert.ToInt32(napSzam.Text);
-                if (napSzama > 0 && napSzama < 31)
-                {
-                    napSzama = Convert.ToInt32(napSzam.Text);
-                }
-                else
-                {
-                    napSzam.Text = "";
-
-                }
-            }
-            catch (Exception ex)
-            {
-                napSzam.Text = "";
-            }
-
         }
     }
 }
