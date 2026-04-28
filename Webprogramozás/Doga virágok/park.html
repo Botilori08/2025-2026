@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Park</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+</head>
+<body onload="">
+    <div class="bg-success p-2">
+        <h1>Park érettségi feladat</h1>
+    </div>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-4">
+                <h1>2. feladat</h1>
+                <p>Felajánlások száma <span id="f2"></span></p>
+                <button onclick="feladat2()" class="btn btn-secondary">Keres</button>
+            </div>
+            <div class="col-lg-4">
+                <h1>3.feladat</h1>
+                <span>A bejárat mindkét oldalán ültetők:</span>
+                <div id="f3"></div>
+                <button onclick="feladat3()" class="btn btn-secondary">Keresés</button>
+            </div>
+            <div class="col-lg-4">
+                <h1>4. feladat</h1>
+                <label for="sorSzam">Adja meg egy sor számát:</label>
+                <input type="number" id="sorSzam" class="input-group">
+                <button onclick="feladat4()" class="btn btn-secondary">Keresés</button>
+
+                <div id="f4eredmeny">
+                    <p>A felajánlók száma: <span id="szama"></span></p>
+                    <p>A virágágyás színe, ha csak az első ültet: <span id="elsoSzine"></span></p>
+                    <p>A virágágyás színei: <span id="szinek"></span></p>
+
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-lg-4">
+                <h1>5. feladat</h1>
+                <p></p>
+            </div>
+            <div class="col-lg-4">
+
+            </div>
+            <div class="col-lg-4">
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <script>
+        betolt();
+
+        const flowerColors = {
+            A: "#E32636", // Alizarin (Mélyvörös)
+            B: "#0000FF", // Blue (Búzavirág kék)
+            C: "#FFFDD0", // Cream (Krémfehér vadvirág)
+            D: "#9955BB", // Deep Lilac (Orgona lila)
+            E: "#660066", // Eggplant (Sötét harangvirág)
+            F: "#FF5470", // Fiery Rose (Rózsa pink)
+            G: "#FFD700", // Goldenrod (Aranyvessző sárga)
+            H: "#DF73FF", // Heliotrope (Heliotróp lila)
+            I: "#4B0082", // Indigo (Írisz kék)
+            J: "#F8DE7E", // Jasmine (Jázmin sárga)
+            K: "#E79FC4", // Kousa Dogwood (Cseresznyevirág rózsaszín)
+            L: "#E6E6FA", // Lavender (Levendula)
+            M: "#FF00FF", // Magenta (Mályva)
+            N: "#FFDB58", // Narcissus (Nárcisz sárga)
+            O: "#FF8C00", // Orchid Orange (Orchidea narancs)
+            P: "#FFC0CB", // Pink (Pünkösdi rózsa)
+            Q: "#5D3954", // Queen of the Night (Fekete tulipán árnyalat)
+            R: "#FF0000", // Red (Pipacs piros)
+            S: "#FA8072", // Salmon (Mályvarózsa)
+            T: "#40E0D0", // Turquoise (Tigrincsliliom türkiz foltjai)
+            U: "#120A8F", // Ultramarine (Kék encián)
+            V: "#EE82EE", // Violet (Ibolya)
+            W: "#FFFFFF", // White (Hóvirág fehér)
+            X: "#F1B42F", // Xanthic (Sárga krizantém)
+            Y: "#FFFF00", // Yellow (Napraforgó sárga)
+            Z: "#39A78E" // Zinnia (Rézvirág zöldes-türkiz)
+            };
+        
+        
+
+        let viragagyasSzam = 0;
+        let adatok = [];
+
+        function betolt()
+        {
+            fetch("felajanlas.txt")
+            .then(x => x.text())
+            .then(y =>
+                {
+                    let vag = y.split("\r\n");
+
+                    viragagyasSzam = vag[0];
+                    vag.splice(0,1);
+                    
+                    //console.log(vag)
+
+                    vag.forEach(e =>
+                        {
+                            let vagas = e.split(" ")
+                            
+                            adatok.push({elsoAgyas: parseInt(vagas[0]),utolsoAgyas: parseInt(vagas[1]),szinKod: vagas[2]})
+                        }
+                    )
+
+                    
+
+
+                }
+            )
+        }
+
+        function feladat2()
+        {
+            console.log(adatok)
+            console.log(adatok[2])
+            document.getElementById("f2").innerHTML = adatok.length;
+        }
+
+        function feladat3()
+        {
+            let bejaratMellett = [];
+
+            adatok.forEach((e,index) => 
+                {
+                    if(e.elsoAgyas > e.utolsoAgyas)
+                    {
+                        bejaratMellett.push(index+1)
+                    }
+                }
+            )
+
+
+            let ul = document.createElement("ul");
+
+            bejaratMellett.forEach(e => 
+                {
+                    let li = document.createElement("li");
+                    li.innerHTML = e;
+                    ul.appendChild(li)
+                }
+            )
+
+
+
+            document.getElementById("f3").appendChild(ul);
+
+        }
+
+        function feladat4()
+        {
+            let kiir4 = document.getElementById("f4eredmeny");
+            let sorSzam = document.getElementById("sorSzam").value;
+
+            let szurt = adatok.filter(e =>e.elsoAgyas <= sorSzam && e.utolsoAgyas >= sorSzam)
+
+            let elsoSzin = szurt[0].szinKod;
+
+            
+
+            let szinek = szurt.map(e => e.szinKod)
+
+            let szinekSzurt = [];
+            szinek.forEach(e =>
+                {
+                    if(!szinekSzurt.includes(e))
+                    {
+                        szinekSzurt.push(e)
+                    }
+                }
+            )
+
+            console.log(szinekSzurt)
+
+            document.getElementById("szama").innerHTML = szurt.length
+            document.getElementById("elsoSzine").innerHTML = elsoSzin;
+            document.getElementById("szinek").innerHTML += szinekSzurt.join(",");
+        }
+
+        function feladat5()
+        {
+
+        }
+        
+    </script>
+</body>
+</html>
