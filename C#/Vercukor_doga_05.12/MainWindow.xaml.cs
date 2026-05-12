@@ -24,15 +24,26 @@ namespace Vercukor_doga_05._12
             InitializeComponent();
 
             
+            
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
 
-            bool joAdat = false;
+            bool joNap = false;
 
-            string meresMod = Meresmod.SelectedItem as string;
-            string napSzak = Napszak.SelectedItem as string;
+
+            
+
+            ComboBoxItem selectedItem = (ComboBoxItem)Meresmod.SelectedItem;
+            string meresMod = selectedItem.Content.ToString();
+
+            selectedItem = (ComboBoxItem)Napszak.SelectedItem;
+            string napSzak = selectedItem.Content.ToString();
+
+            //MessageBox.Show(meresMod);
+
+
 
 
             int napSzam = 0;
@@ -44,44 +55,48 @@ namespace Vercukor_doga_05._12
             else
             {
                 napSzam = Convert.ToInt32(Napszam.Text);
-                joAdat = true;
+                joNap = true;
             }
 
-            int mertAdat = 0;
+
+            bool joMeres = false;
+            double mertAdat = 0;
+
+            valasz.Content = "";
 
             if (Convert.ToDouble(Ertek.Text) <= 0.0 || Convert.ToDouble(Ertek.Text) >= 40.0)
             {
                 valasz.Content = "Nem megfelelő adat!";
             }
-            else if(meresMod == "Étkezés után 2 órával" && Convert.ToDouble(Ertek.Text) <= 3.9)
-            {
-                valasz.Content = "Alacsony érték!";
-                napSzam = Convert.ToInt32(Ertek.Text);
-                joAdat = true;
-            }
-            else if (meresMod == "Étkezés után 2 órával" && Convert.ToDouble(Ertek.Text) >= 7.8)
-            {
-                valasz.Content = "Magas érték!";
-                napSzam = Convert.ToInt32(Ertek.Text);
-                joAdat = true;
-            }
-            else if(meresMod == "Éhgyomorra" && Convert.ToDouble(Ertek.Text) <= 3.9)
-            {
-                valasz.Content = "Alacsony érték!";
-                napSzam = Convert.ToInt32(Ertek.Text);
-                joAdat = true;
-            }
-            else if (meresMod == "Éhgyomorra" && Convert.ToDouble(Ertek.Text) >= 5.6)
-            {
-                valasz.Content = "Magas érték!";
-                napSzam = Convert.ToInt32(Ertek.Text);
-                joAdat = true;
-            }
             else
             {
-                napSzam = Convert.ToInt32(Ertek.Text);
-                joAdat = true;
+                mertAdat = Convert.ToDouble(Ertek.Text);
+                joMeres = true;
             }
+
+
+            if(meresMod == "Étkezés után 2 órával" && Convert.ToDouble(Ertek.Text) < 3.9)
+            {
+                
+                valasz.Content = "Alacsony érték!";
+                mertAdat = Convert.ToDouble(Ertek.Text);
+            }
+            else if (meresMod == "Étkezés után 2 órával" && Convert.ToDouble(Ertek.Text) > 7.8)
+            {
+                valasz.Content = "Magas érték!";
+                mertAdat = Convert.ToDouble(Ertek.Text);
+            }
+            else if(meresMod == "Éhgyomorra" && Convert.ToDouble(Ertek.Text) < 3.9)
+            {
+                valasz.Content = "Alacsony érték!";
+                mertAdat = Convert.ToDouble(Ertek.Text);
+            }
+            else if (meresMod == "Éhgyomorra" && Convert.ToDouble(Ertek.Text) > 5.6)
+            {
+                valasz.Content = "Magas érték!";
+                mertAdat = Convert.ToDouble(Ertek.Text);
+            }
+
 
             bool nincsIlyen = true;
 
@@ -94,17 +109,22 @@ namespace Vercukor_doga_05._12
             });
 
 
-            if (joAdat && nincsIlyen)
+            if (joNap && joMeres)
             {
                 meresek.Add(new Meres(napSzam, napSzak, meresMod, mertAdat));
             }
-            else
+            else if(!nincsIlyen)
             {
                 MessageBox.Show("Már van erre a napra bejegyzés!");
             }
 
 
+            var kiiras = meresek.Select(e => $"{e.nap} ; {e.napSzak} ; {e.meresMod} ; {e.mertErtek}");
+
+            Adatok.ItemsSource = kiiras;
+
             
+
         }
     }
 }
