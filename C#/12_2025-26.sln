@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 17
-VisualStudioVersion = 17.14.36414.22
+# Visual Studio Version 18
+VisualStudioVersion = 18.4.11626.88 stable
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PEZ OOP", "PEZ OOP\PEZ OOP.csproj", "{0E834661-361A-4C47-B905-532178990E73}"
 EndProject
@@ -78,6 +78,8 @@ EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vernyomas", "Vernyomas\Vernyomas.csproj", "{63A590FA-393E-493F-A30B-D0EA05B77B35}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Vercukor_doga_05.12", "Vercukor_doga_05.12\Vercukor_doga_05.12.csproj", "{7646D1FD-FF12-4108-B3C7-C143F84A961F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Kockák", "Kockák\Kockák.csproj", "{47676FB6-1AA7-4DC8-941E-3C773A34CD37}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -237,6 +239,10 @@ Global
 		{7646D1FD-FF12-4108-B3C7-C143F84A961F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{7646D1FD-FF12-4108-B3C7-C143F84A961F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{7646D1FD-FF12-4108-B3C7-C143F84A961F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{47676FB6-1AA7-4DC8-941E-3C773A34CD37}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{47676FB6-1AA7-4DC8-941E-3C773A34CD37}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{47676FB6-1AA7-4DC8-941E-3C773A34CD37}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{47676FB6-1AA7-4DC8-941E-3C773A34CD37}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

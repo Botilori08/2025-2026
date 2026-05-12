@@ -1,0 +1,40 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net10.0-windows</TargetFramework>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="Anni.png" />
+    <None Remove="Gallery\Anni.png" />
+    <None Remove="Gallery\kocka1.jpg" />
+    <None Remove="Gallery\kocka2.jpg" />
+    <None Remove="Gallery\kocka3.jpg" />
+    <None Remove="Gallery\kocka4.jpg" />
+    <None Remove="Gallery\kocka5.jpg" />
+    <None Remove="Gallery\kocka6.jpg" />
+    <None Remove="Gallery\Panni.png" />
+    <None Remove="Panni.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Gallery\kocka5.jpg" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Anni.png" />
+    <Resource Include="Gallery\Anni.png" />
+    <Resource Include="Gallery\kocka1.jpg" />
+    <Resource Include="Gallery\kocka2.jpg" />
+    <Resource Include="Gallery\kocka3.jpg" />
+    <Resource Include="Gallery\kocka4.jpg" />
+    <Resource Include="Gallery\kocka6.jpg" />
+    <Resource Include="Gallery\Panni.png" />
+    <Resource Include="Panni.png" />
+  </ItemGroup>
+
+</Project>
