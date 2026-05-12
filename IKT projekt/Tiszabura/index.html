@@ -65,8 +65,8 @@
                 <table class="table">
                     <thead>
                         <tr>
-                            <th scope="col">Családnév</th>
-                            <th scope="col">Darabszám</th>
+                            <th scope="col"><button class="btn btn-secondary">Családnév</button></th>
+                            <th scope="col"><button class="btn btn-secondary">Darabszám</button></th>
                         </tr>
 
                     </thead>
@@ -294,9 +294,14 @@
 
         function feladat5()
         {
+
+            let ABCszerint = document.getElementById("ABCszerint").checked
+
+            console.log(ABCszerint)
+
             let csaladnevek = [];
 
-                        let vezeteknevek = [];
+            let vezeteknevek = [];
 
             
             csaladnevek = adatok.map(e => e.nev.split(" ")[0]);
@@ -339,6 +344,12 @@
                 }
             )
 
+        }
+
+
+        function rendezABCcsokkeno(statisztika)
+        {
+            
         }
 
 
