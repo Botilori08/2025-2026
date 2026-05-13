@@ -9,17 +9,13 @@
 
     <style>
 
-        #eredmeny
-        {
-            text-align: center;
-        }
-
         .valaszJelolo
         {
             width: 25px;
             height: 25px;
-            border: 1px solid black;
+            _border: 1px solid black;
             _display: inline-block;
+            box-sizing: content-box;
         }
 
 
@@ -43,6 +39,22 @@
                 <input type="text" class="input input-group form-control shadow-sm" id="kod" >
                 <div class="text-center p-2"><button type="button" class="btn btn-dark" onclick="feladat3()">Küldés</button></div>
                 <div id="eredmeny" class="border"></div>
+
+                <h3>Helyes megoldás</h3>
+                <div id="helyes" class="border"></div>
+
+            </div>
+            <div class="col-6">
+                <h2>5. feladat</h2>
+                
+                <label for="kod">A feladat sorszáma:</label>
+                <input type="number" class="input input-group form-control shadow-sm" id="sorszam" min="1" max="14">
+
+                <div class="text-center p-2"><button type="button" class="btn btn-dark" onclick="feladat5()">Küldés</button></div>
+
+                <div id="f5eredmeny" class="">
+                    <p>A feladatra <span></span> fő, a versenyzők <span></span>-a adott helyes választ. </p>
+                </div>
 
             </div>
         </div>
@@ -107,38 +119,80 @@
                 return;
             }
 
-            valaszMegjelenit(versenyzoAdat[0].valaszok)
+            document.getElementById("eredmeny").innerHTML = "";
+            document.getElementById("eredmeny").appendChild(valaszMegjelenit(versenyzoAdat[0].valaszok,true));
+
+            document.getElementById("helyes").innerHTML = "";
+            document.getElementById("helyes").appendChild(valaszMegjelenit(helyesValaszok));
 
         }
         
-        function valaszMegjelenit(valaszok)
+        function valaszMegjelenit(valaszok,javitasKell = false)
         {
+            
+            let gyujto = document.createElement("div");
 
 
-            valaszok.split("").forEach(e => {
+            
+            valaszok.split("").forEach((e,i) => {
                 let div = document.createElement("div")
+
+                if(javitasKell)
+                {
+                    if(e != helyesValaszok[i])
+                    {
+                        /*div.classList.add("border")
+                        div.classList.add("border-danger")
+                        div.classList.add("border-3")*/
+
+                        div.classList.add("bg-danger")
+
+                    }
+                }
+
                 div.classList.add("valaszJelolo")
                 div.classList.add("d-inline-block")
                 //div.classList.add(`${e}`)
                 div.classList.add("text-white")
+                div.classList.add("text-center")
                 switch(e)
                 {
                     case "A": div.classList.add("bg-primary")
                         break;
                     case "B": div.classList.add("bg-success")
                         break;
-                    case "C": div.classList.add("bg-danger")
+                    case "C": div.classList.add("bg-info")
                         break;  
-                    case "D": div.classList.add("bg-secondary")
+                    case "D": div.classList.add("bg-warning")
                         break;
-                    case "X": div.classList.add("bg-warning")
+                    case "X": div.classList.add("bg-secondary")
                         break;       
                 }
 
                 div.innerHTML = e;
-                document.getElementById("eredmeny").appendChild(div)
+                gyujto.appendChild(div);
             });
+
+            return gyujto;
         }
+
+        function feladat5()
+        {
+
+            let sorszam = parseInt(document.getElementById("sorszam").value)-1;
+
+            console.log(sorszam)
+
+            let szurt = adatok.filter(e => 
+                {
+                    e.valaszok[sorszam] == helyesValaszok[sorszam]
+                }
+            )
+
+            console.log(szurt)
+
+        }
+
 
 
     </script>
