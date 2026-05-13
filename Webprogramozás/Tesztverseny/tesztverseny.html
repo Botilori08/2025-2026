@@ -6,13 +6,45 @@
     <title>Tesztverseny</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <style>
+
+        #eredmeny
+        {
+            text-align: center;
+        }
+
+        .valaszJelolo
+        {
+            width: 25px;
+            height: 25px;
+            border: 1px solid black;
+            _display: inline-block;
+        }
+
+
+    </style>
+
 </head>
 <body onload="betolt()">
 
-    <div class="col-12 bg-dark text-white">Tesztverseny</div>
+    <header class="col-12 bg-dark text-white"><h2 class="p-2">Tesztverseny</h2></header>
     <div class="container">
         <div class="row">
-            <div></div>
+            <div class="col-6">
+                <h2>2. feladat</h2>
+                <p>A vetélkedőn <span id="f2" class="bg-success text-white p-1 rounded fw-bold"></span> versenyző indult.</p>
+
+            </div>
+            <div class="col-6">
+                <h2>3. feladat</h2>
+                
+                <label for="kod">A versenyző azonosítója:</label>
+                <input type="text" class="input input-group form-control shadow-sm" id="kod" >
+                <div class="text-center p-2"><button type="button" class="btn btn-dark" onclick="feladat3()">Küldés</button></div>
+                <div id="eredmeny" class="border"></div>
+
+            </div>
         </div>
     </div>
 
@@ -33,32 +65,81 @@
             .then(y => 
                 {
                     //console.log(y);
-
                     let sorok = y.split("\r\n");
-
                     //console.log(sorok);
-
                     helyesValaszok = sorok.shift();
-                    
                     //console.log(helyesValaszok)
                     //console.log(sorok);
                     sorok.pop();
 
-                    sorok.forEach(e =>
-                        {
-                            adatok.push({kod:e.split(" ")[0],valaszok:e.split(" ")[1]})
-                        }
-                    )
+                    adatok = sorok.map(e => new Object({kod:e.split(" ")[0],valaszok:e.split(" ")[1]}));
+                    //Vagy return {kod:e.split(" ")[0],valaszok:e.split(" ")[1]}  
+
+                    //adatok = sorok.map(e => e.split(" "));
 
                     console.log(adatok)
+
+                    feladat2();
 
 
                 }
             )
+
+            
         }
 
 
+        function feladat2()
+        {
+            document.getElementById("f2").innerHTML = adatok.length;
+        }
+
+        function feladat3()
+        {
+            let kod = document.getElementById("kod").value.toUpperCase();
+
+            let versenyzoAdat = adatok.filter(e => kod == e.kod)
+
+            console.log(versenyzoAdat)
+
+            if(versenyzoAdat.length == 0)
+            {
+                return;
+            }
+
+            valaszMegjelenit(versenyzoAdat[0].valaszok)
+
+        }
         
+        function valaszMegjelenit(valaszok)
+        {
+
+
+            valaszok.split("").forEach(e => {
+                let div = document.createElement("div")
+                div.classList.add("valaszJelolo")
+                div.classList.add("d-inline-block")
+                //div.classList.add(`${e}`)
+                div.classList.add("text-white")
+                switch(e)
+                {
+                    case "A": div.classList.add("bg-primary")
+                        break;
+                    case "B": div.classList.add("bg-success")
+                        break;
+                    case "C": div.classList.add("bg-danger")
+                        break;  
+                    case "D": div.classList.add("bg-secondary")
+                        break;
+                    case "X": div.classList.add("bg-warning")
+                        break;       
+                }
+
+                div.innerHTML = e;
+                document.getElementById("eredmeny").appendChild(div)
+            });
+        }
+
 
     </script>
 </body>
