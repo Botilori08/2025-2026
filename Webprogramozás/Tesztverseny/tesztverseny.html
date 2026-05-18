@@ -106,7 +106,31 @@
                     //console.log(sorok);
                     sorok.pop();
 
-                    adatok = sorok.map(e => new Object({kod:e.split(" ")[0],valaszok:e.split(" ")[1]}));
+                    adatok = sorok.map(e => new Object({
+                        kod:e.split(" ")[0],
+                        valaszok:e.split(" ")[1],
+                        pontSzam(helyesvalaszok)
+                        {
+                            let pontszam = 0;
+                            for(let i = 0;i < this.valaszok.length;i++)
+                            {   
+                                if(this.valaszok[i] == helyesValaszok[i])
+                                {
+                                    /*
+                                    1-5. feladat 3 pontot
+                                    a 6-10. feladat 4 pontot,
+                                    a 11-13. feladat 5 pontot,
+                                    míg a 14. feladat 6 pontot ér.*/
+                                    if(i < 5){pontszam+=3;}
+                                    else if(i < 10){pontszam+=4;}
+                                    else if(i < 13){pontszam+=5;}
+                                    else{pontszam+=6;} 
+                                }
+                            }
+                            return pontszam;
+                        }
+                    }));
+
                     //Vagy return {kod:e.split(" ")[0],valaszok:e.split(" ")[1]}  
 
                     //adatok = sorok.map(e => e.split(" "));
@@ -225,6 +249,32 @@
         function feladat6()
         {
             //console.log("szia")
+
+            let rendezett = adatok.toSorted((a,b) => b.pontSzam(helyesValaszok) - a.pontSzam(helyesValaszok))
+
+            rendezett.forEach(e =>
+                {
+                    let sor = document.createElement("tr");
+                    let cellaKod = document.createElement("td");
+                    cellaKod.innerHTML = e.kod;
+                    let cellaPontszam = document.createElement("td");
+                    cellaPontszam.innerHTML = e.pontSzam(helyesValaszok);
+                    let cellaProgress = document.createElement("td");
+
+                    let progress = document.createElement("progress");
+                    progress.max = 56;
+                    progress.value = e.pontSzam(helyesValaszok);
+                    progress.className = "progress-bar";
+                    cellaProgress.appendChild(progress);
+                    sor.appendChild(cellaKod);
+                    sor.appendChild(cellaPontszam);
+                    sor.appendChild(cellaProgress);
+                    
+                    document.getElementById("f6Tabla").appendChild(sor);
+                }
+            )
+            
+
         }
 
 
