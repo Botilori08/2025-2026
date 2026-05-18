@@ -52,10 +52,32 @@
 
                 <div class="text-center p-2"><button type="button" class="btn btn-dark" onclick="feladat5()">Küldés</button></div>
 
-                <div id="f5eredmeny" class="">
-                    <p>A feladatra <span></span> fő, a versenyzők <span></span>-a adott helyes választ. </p>
+                <div id="f5eredmeny">
+                    <p>A feladatra <span id="f5Fo"></span> fő, a versenyzők <span id="f5Szazalek"></span>-a adott helyes választ. </p>
+
+                    <progress id="f5Progress" value="" class="progress-bar" max="100"></progress>
+
                 </div>
 
+            </div>
+
+            <div class="col-6 mt-2">
+                <h2>6. feladat</h2>
+                
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th scope="col">Kód</th>
+                            <th scope="col">Pontszám</th>
+                            <th scope="col"></th>
+                        </tr>
+                    </thead>
+                    <tbody id="f6Tabla">
+
+                    </tbody>
+
+                </table>
+                
             </div>
         </div>
     </div>
@@ -95,8 +117,9 @@
 
 
                 }
+            
             )
-
+            .then(x => feladat6());
             
         }
 
@@ -183,16 +206,26 @@
 
             console.log(sorszam)
 
-            let szurt = adatok.filter(e => 
+            const szurt = adatok.filter(e => 
                 {
-                    e.valaszok[sorszam] == helyesValaszok[sorszam]
+                    return e.valaszok[sorszam] == helyesValaszok[sorszam];
                 }
             )
 
-            console.log(szurt)
+            //console.log(szurt.length)
+
+            document.getElementById("f5Fo").innerHTML = szurt.length;
+
+            document.getElementById("f5Szazalek").innerHTML = ((szurt.length / adatok.length)*100).toFixed(2)+"%";
+
+            document.getElementById("f5Progress").value = ((szurt.length / adatok.length)*100).toFixed(2);
 
         }
 
+        function feladat6()
+        {
+            //console.log("szia")
+        }
 
 
     </script>
