@@ -38,11 +38,11 @@ namespace DK_erettsegi_2026
 
         public double gyorsulas()
         {
-            return (sebesseg - elozo.sebesseg) / (veg - kezdet);
+            return (sebesseg - elozo.sebesseg) / (double)(veg - kezdet);
         }
 
 
-        public double pillanatnyiSebesseg(int idopont)
+        public double pillanatnyiSebesseg(double idopont)
         {
             if(idopont >= kezdet && idopont <= veg)
             {
@@ -53,6 +53,42 @@ namespace DK_erettsegi_2026
                 return elozo.sebesseg;
             }
             return -1;
+        }
+
+        public double elteltIdo()
+        {
+            return veg - kezdet;
+        }
+
+        public double elotteElteltido()
+        {
+            return kezdet - elozo.veg;
+        }
+
+        public double elotteMegtettUt()
+        {
+            return elozo.sebesseg * elotteElteltido();
+        }
+
+        public double megtettUt()
+        {
+            return (double)(elozo.sebesseg + sebesseg) / 2 * elteltIdo();
+        }
+
+        public double osszUt()
+        {
+
+            return elotteMegtettUt() + megtettUt();
+            
+
+            //return 1;
+
+            //(v1+v2 / 2) * (t2 - t1)
+        }
+
+        public string KetSor()
+        {
+            return $"{kezdet}\t{elozo.sebesseg}\n{veg}\t{sebesseg}";
         }
 
     }

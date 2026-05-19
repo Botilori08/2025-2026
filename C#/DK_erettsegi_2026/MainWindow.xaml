@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:DK_erettsegi_2026"
         mc:Ignorable="d"
-        Title="MainWindow" Height="648" Width="800">
+        Title="MainWindow" Height="984" Width="800">
     <Grid>
         <Label Content="1. feladat" HorizontalAlignment="Left" Margin="48,28,0,0" VerticalAlignment="Top" FontSize="16"/>
         <TextBox x:Name="AutoAzon" HorizontalAlignment="Left" Margin="242,74,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
@@ -33,6 +33,12 @@
         <Button Content="Beküldés" HorizontalAlignment="Left" Margin="48,565,0,0" VerticalAlignment="Top" Width="68" Click="Button_Click_3"/>
         <Label Content="Sebessége a megadott időpontban:" HorizontalAlignment="Left" Margin="362,523,0,0" VerticalAlignment="Top"/>
         <Label x:Name="f5Valasz" Content="" HorizontalAlignment="Left" Margin="565,523,0,0" VerticalAlignment="Top"/>
+        <Label Content="6. feladat" HorizontalAlignment="Left" Margin="48,625,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Az autó megtett összesen:" HorizontalAlignment="Left" Margin="48,676,0,0" VerticalAlignment="Top"/>
+        <Label x:Name="f6Eredmeny" Content="" HorizontalAlignment="Left" Margin="207,676,0,0" VerticalAlignment="Top"/>
+        <Button Content="Lekérés" HorizontalAlignment="Left" Margin="48,718,0,0" VerticalAlignment="Top" Width="68" Click="Button_Click_4"/>
+        <Label Content="7. feladat" HorizontalAlignment="Left" Margin="46,792,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Button Content="Fájlbaír" HorizontalAlignment="Left" Margin="148,798,0,0" VerticalAlignment="Top" Width="59" Click="Button_Click_5"/>
 
     </Grid>
 </Window>

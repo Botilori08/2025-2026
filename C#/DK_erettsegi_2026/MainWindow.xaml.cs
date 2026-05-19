@@ -118,5 +118,30 @@ namespace DK_erettsegi_2026
             }
 
         }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+
+            double megtettUt = 0;
+
+            adatok.ForEach(e =>
+            {
+                megtettUt += e.osszUt();
+            }
+            );
+
+            f6Eredmeny.Content = $"{megtettUt:0.0}";
+
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            fajlbaIras();
+        }
+
+        public void fajlbaIras()
+        {
+            File.WriteAllLines("V" + AutoAzon.Text+".txt", adatok.Select(e => e.KetSor()).ToList());
+        }
     }
 }
