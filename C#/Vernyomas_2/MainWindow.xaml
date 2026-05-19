@@ -1,0 +1,31 @@
+﻿<Window x:Class="Vernyomas_2.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Vernyomas_2"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="505" Width="800">
+    <Grid>
+        <DatePicker x:Name="Datum" HorizontalAlignment="Left" Margin="107,51,0,0" VerticalAlignment="Top"/>
+        <Label Content="Dátum:" HorizontalAlignment="Left" Margin="35,47,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <Label Content="Napszak:" HorizontalAlignment="Left" Margin="35,107,0,0" VerticalAlignment="Top" FontSize="16"/>
+        <RadioButton Content="Reggel" HorizontalAlignment="Left" Margin="35,143,0,0" VerticalAlignment="Top" GroupName="napszak" Checked="RadioButton_Checked"/>
+        <RadioButton Content="Délben" HorizontalAlignment="Left" Margin="35,163,0,0" VerticalAlignment="Top" GroupName="napszak" Checked="RadioButton_Checked"/>
+        <RadioButton Content="Este" HorizontalAlignment="Left" Margin="35,183,0,0" VerticalAlignment="Top" GroupName="napszak" Checked="RadioButton_Checked"/>
+        <Label Content="Szisztolés" HorizontalAlignment="Left" Margin="35,222,0,0" VerticalAlignment="Top"/>
+        <TextBox x:Name="Szisztoles" HorizontalAlignment="Left" Margin="35,248,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Diasztolés" HorizontalAlignment="Left" Margin="35,284,0,0" VerticalAlignment="Top" FontSize="11"/>
+        <TextBox x:Name="Diasztoles" HorizontalAlignment="Left" Margin="35,309,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Pulzus" HorizontalAlignment="Left" Margin="35,338,0,0" VerticalAlignment="Top" FontSize="11"/>
+        <TextBox x:Name="Pulzus" HorizontalAlignment="Left" Margin="35,363,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120"/>
+        <ListBox x:Name="MeresMegjelenit" d:ItemsSource="{d:SampleData ItemCount=5}" Margin="285,0,0,0"/>
+        <Button Content="Rögzít" HorizontalAlignment="Left" Margin="55,408,0,0" VerticalAlignment="Top" Width="68" Click="Button_Click"/>
+        <Button Content="Biztonsági mentés" HorizontalAlignment="Left" Margin="35,442,0,0" VerticalAlignment="Top" Width="112"/>
+        <Label x:Name="sysValasz" Content="" HorizontalAlignment="Left" Margin="160,244,0,0" VerticalAlignment="Top" Foreground="#FFEA0D0D"/>
+        <Label x:Name="diaValasz" Content="" HorizontalAlignment="Left" Margin="160,305,0,0" VerticalAlignment="Top" Foreground="#FFEA0D0D"/>
+        <Label x:Name="pulzusValasz" Content="" HorizontalAlignment="Left" Margin="160,359,0,0" VerticalAlignment="Top" Foreground="#FFEA0D0D"/>
+
+
+    </Grid>
+</Window>
