@@ -8,7 +8,13 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
 
     <style>
-
+        .kartya
+        {
+            height: 200px;
+            width:100px;
+            background-repeat: no-repeat;
+            background-size: auto;
+        }
 
     </style>
 </head>
@@ -21,8 +27,13 @@
             <select name="szint" id="szint" class="input-group form-control"></select>
             <button onclick="indit()" class="btn btn-secondary">Játék indítása</button>
         </div>
+
+
     </div>
 
+    <div class="container col-12">
+        <div id="asztal"></div>
+    </div>
     <script>
         function listaBetolt()
         {
@@ -36,7 +47,7 @@
 
         function indit()
         {
-            let szint = document.getElementById("szint").value;
+            let szint = parseInt(document.getElementById("szint").value);
 
             let sorsoltKepek = [];
 
@@ -77,11 +88,18 @@
                     
             }
             
+
+            console.log(sorsolandoSzam);
+
             let random = Math.floor(Math.random()*50)+1;
 
+            let doboz = document.createElement("div");
+            doboz.style.backgroundImage = `url(./képek/kartya${random}.jpg)`;
+            doboz.className = "kartya";
+            document.getElementById("asztal").appendChild(doboz);
 
 
-            console.log(random,szint)
+            console.log(szint,sorsolandoSzam)
         }
 
     </script>
