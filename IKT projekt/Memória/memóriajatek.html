@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="hu">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Memóriajáték</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+    <style>
+
+
+    </style>
+</head>
+<body onload="listaBetolt()">
+    
+    <div class="container col-12">
+        <div class="row">
+            <h1>Memóriajáték</h1>
+            <label for="szint">Válassz nehézségi szintet:</label>
+            <select name="szint" id="szint" class="input-group form-control"></select>
+            <button onclick="indit()" class="btn btn-secondary">Játék indítása</button>
+        </div>
+    </div>
+
+    <script>
+        function listaBetolt()
+        {
+            for(let i = 0;i < 10;i++)
+            {
+                let option = document.createElement("option")
+                option.innerHTML = i+1;
+                document.getElementById("szint").appendChild(option)
+            }
+        }
+
+        function indit()
+        {
+            let szint = document.getElementById("szint").value;
+
+            let sorsoltKepek = [];
+
+            let sorsolandoSzam = 0;
+            
+            switch(szint)
+            {
+                case 1:
+                    sorsolandoSzam = 2
+                    break;
+                case 2:
+                    sorsolandoSzam = 6
+                    break;
+                case 3:
+                    sorsolandoSzam = 8
+                    break;
+                case 4:
+                    sorsolandoSzam = 12
+                    break;
+                case 5:
+                    sorsolandoSzam = 18
+                    break;
+                case 6:
+                    sorsolandoSzam = 24
+                    break;
+                case 7:
+                    sorsolandoSzam = 30
+                    break;
+                case 8:
+                    sorsolandoSzam = 32
+                    break;
+                case 9: 
+                    sorsolandoSzam = 40
+                    break;
+                case 10:
+                    sorsolandoSzam = 50
+                    break;
+                    
+            }
+            
+            let random = Math.floor(Math.random()*50)+1;
+
+
+
+            console.log(random,szint)
+        }
+
+    </script>
+</body>
+</html>
