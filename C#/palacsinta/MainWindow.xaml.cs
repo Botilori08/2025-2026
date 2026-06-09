@@ -59,16 +59,17 @@ namespace palacsinta
             List<string> kiiras = new List<string>();
 
 
-            int maradek = 0;
+            int kolthetoOsszeg = 0;
             for (int i = 0; i < arak.Count; i++)
             {
 
-                
-                kiiras.Add($"A(z) {i + 1}. napon {(4000 + maradek) / arak[i]} adag palacsintát vettek.");
-                maradek = 4000 % arak[i];
+                kolthetoOsszeg += 4000;
+                int palacsintaSzam = kolthetoOsszeg / arak[i];
 
+                kolthetoOsszeg -= palacsintaSzam * arak[i];
 
-
+                kiiras.Add($"A(z) {i + 1}. napon {palacsintaSzam} adag palacsintát vettek.");
+                 
             }
 
             f4.ItemsSource = kiiras;
