@@ -87,6 +87,8 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DK_erettsegi_2026", "DK_ere
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MRZkod", "MRZkod\MRZkod.csproj", "{8450217F-ADFA-4489-9820-331B19857472}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "palacsinta", "palacsinta\palacsinta.csproj", "{35F1B282-0CEF-48E4-B26E-D5EFDB5807FE}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -261,6 +263,10 @@ Global
 		{8450217F-ADFA-4489-9820-331B19857472}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8450217F-ADFA-4489-9820-331B19857472}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8450217F-ADFA-4489-9820-331B19857472}.Release|Any CPU.Build.0 = Release|Any CPU
+		{35F1B282-0CEF-48E4-B26E-D5EFDB5807FE}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{35F1B282-0CEF-48E4-B26E-D5EFDB5807FE}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{35F1B282-0CEF-48E4-B26E-D5EFDB5807FE}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{35F1B282-0CEF-48E4-B26E-D5EFDB5807FE}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
